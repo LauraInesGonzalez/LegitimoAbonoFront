@@ -20,13 +20,15 @@ import { EmpleadoComponent } from './paginas/empleado/empleado.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { OrganismoComponent } from './paginas/organismo/organismo.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     EstructuraComponent,
     TableroComponent,
-    EmpleadoComponent
+    EmpleadoComponent,
+    OrganismoComponent
   ],
   imports: [
     BrowserModule,
