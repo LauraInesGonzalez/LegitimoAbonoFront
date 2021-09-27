@@ -6,33 +6,42 @@ import { Observable, of as observableOf, merge } from 'rxjs';
 
 // TODO: Replace this with your own data model type
 export interface OrganismoItem {
-  name: string;
   id: number;
+  cuit: any;
+  denominacion: any;
+  direccion: any;
+  telefono: any;
+  mail: any;
+  eliminado: any;
 }
 
 // TODO: replace this with real data from your application
-const EXAMPLE_DATA: OrganismoItem[] = [
-  {id: 1, name: 'Hydrogen'},
-  {id: 2, name: 'Helium'},
-  {id: 3, name: 'Lithium'},
-  {id: 4, name: 'Beryllium'},
-  {id: 5, name: 'Boron'},
-  {id: 6, name: 'Carbon'},
-  {id: 7, name: 'Nitrogen'},
-  {id: 8, name: 'Oxygen'},
-  {id: 9, name: 'Fluorine'},
-  {id: 10, name: 'Neon'},
-  {id: 11, name: 'Sodium'},
-  {id: 12, name: 'Magnesium'},
-  {id: 13, name: 'Aluminum'},
-  {id: 14, name: 'Silicon'},
-  {id: 15, name: 'Phosphorus'},
-  {id: 16, name: 'Sulfur'},
-  {id: 17, name: 'Chlorine'},
-  {id: 18, name: 'Argon'},
-  {id: 19, name: 'Potassium'},
-  {id: 20, name: 'Calcium'},
-];
+// const EXAMPLE_DATA: OrganismoItem[] = [
+//   {"id":1,"cuit":"30-33333333-3","denominacion":"TRIBUNAL FISCAL DE LA NACION","direccion":1,"telefono":"01148885678","mail":"TRIBUNALFISCAL@MECON.GOB.AR","eliminado":null},
+//   {"id":2,"cuit":"34-54667611-2","denominacion":"TRIBUNAL DE TASACIONES DE LA NACION","direccion":1,"telefono":"01143493032","mail":"TRIBUNALTASACION@PRODUCCION.GOB.AR","eliminado":null},{"id":3,"cuit":"34-54666666-2","denominacion":"BANCO CENTRAL DE LA REPUBLICA ARGENTINA","direccion":1,"telefono":"01143675243","mail":"BCRA@ECONOMIA.GOB.AR","eliminado":null},{"id":4,"cuit":"34-5413131313-2","denominacion":"COMISION NACIONAL DE VALORES","direccion":1,"telefono":"01143494444","mail":"CNV@ECONOMIA.GOB.AR","eliminado":null}];
+
+// const EXAMPLE_DATA: OrganismoItem[] = [
+//   {id: 1, name: 'TRIBUNAL FISCAL DE LA NACION'},
+//   {id: 2, name: 'TRIBUNAL DE TASACIONES DE LA NACION'},
+//   {id: 3, name: 'Lithium'},
+//   {id: 4, name: 'Beryllium'},
+//   {id: 5, name: 'Boron'},
+//   {id: 6, name: 'Carbon'},
+//   {id: 7, name: 'Nitrogen'},
+//   {id: 8, name: 'Oxygen'},
+//   {id: 9, name: 'Fluorine'},
+//   {id: 10, name: 'Neon'},
+//   {id: 11, name: 'Sodium'},
+//   {id: 12, name: 'Magnesium'},
+//   {id: 13, name: 'Aluminum'},
+//   {id: 14, name: 'Silicon'},
+//   {id: 15, name: 'Phosphorus'},
+//   {id: 16, name: 'Sulfur'},
+//   {id: 17, name: 'Chlorine'},
+//   {id: 18, name: 'Argon'},
+//   {id: 19, name: 'Potassium'},
+//   {id: 20, name: 'Calcium'},
+// ];
 
 /**
  * Data source for the Organismo view. This class should
@@ -40,7 +49,7 @@ const EXAMPLE_DATA: OrganismoItem[] = [
  * (including sorting, pagination, and filtering).
  */
 export class OrganismoDataSource extends DataSource<OrganismoItem> {
-  data: OrganismoItem[] = EXAMPLE_DATA;
+  data: OrganismoItem[] = [];
   paginator: MatPaginator | undefined;
   sort: MatSort | undefined;
 
@@ -97,7 +106,7 @@ export class OrganismoDataSource extends DataSource<OrganismoItem> {
     return data.sort((a, b) => {
       const isAsc = this.sort?.direction === 'asc';
       switch (this.sort?.active) {
-        case 'name': return compare(a.name, b.name, isAsc);
+        case 'denominacion': return compare(a.denominacion, b.denominacion, isAsc);
         case 'id': return compare(+a.id, +b.id, isAsc);
         default: return 0;
       }

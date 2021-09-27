@@ -20,7 +20,14 @@ import { EmpleadoComponent } from './paginas/empleado/empleado.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { OrganismoComponent } from './paginas/organismo/organismo.component';
+import { HttpClientModule } from '@angular/common/http';
+import { DireccionComponent } from './direccion/direccion.component';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatRadioModule } from '@angular/material/radio';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -28,7 +35,8 @@ import { OrganismoComponent } from './paginas/organismo/organismo.component';
     EstructuraComponent,
     TableroComponent,
     EmpleadoComponent,
-    OrganismoComponent
+    OrganismoComponent,
+    DireccionComponent
   ],
   imports: [
     BrowserModule,
@@ -47,6 +55,12 @@ import { OrganismoComponent } from './paginas/organismo/organismo.component';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
+    HttpClientModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatRadioModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

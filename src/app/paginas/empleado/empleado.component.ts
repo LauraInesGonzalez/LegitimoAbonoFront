@@ -1,7 +1,9 @@
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
+import { ApiArielService } from 'src/app/api-ariel.service';
+import { ApiLauraService } from 'src/app/api-laura.service';
 import { EmpleadoDataSource, EmpleadoItem } from './empleado-datasource';
 
 @Component({
@@ -9,22 +11,56 @@ import { EmpleadoDataSource, EmpleadoItem } from './empleado-datasource';
   templateUrl: './empleado.component.html',
   styleUrls: ['./empleado.component.css']
 })
-export class EmpleadoComponent implements AfterViewInit {
+export class EmpleadoComponent implements AfterViewInit, OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatTable) table!: MatTable<EmpleadoItem>;
   dataSource: EmpleadoDataSource;
 
-  /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['id', 'name'];
+  mostrarLista: boolean = true;
+  mostrarFormulario: boolean = false;
 
-  constructor() {
+  organismos: any[] = []
+
+  /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
+  displayedColumns = ['id', 'nombre', 'apellido'];
+
+  constructor(
+    private api: ApiArielService,
+    private apiLaura: ApiLauraService,
+    ) {
     this.dataSource = new EmpleadoDataSource();
+  }
+  ngOnInit(): void {
+    //this.dataSource.data = this.api.getEmpleados();
+
+    this.api.getEmpleados().subscribe(data=>{
+      this.dataSource.data = data;
+      this.dataSource.sort = this.sort;
+      this.dataSource.paginator = this.paginator;
+      this.table.dataSource = this.dataSource;
+      },error=>{});
+      
   }
 
   ngAfterViewInit(): void {
-    this.dataSource.sort = this.sort;
-    this.dataSource.paginator = this.paginator;
-    this.table.dataSource = this.dataSource;
+  }
+
+  nuevo(){
+    this.mostrarLista = false;
+    this.mostrarFormulario = true;
+    this.cargarOrganismos();
+  }
+
+  cancelar(){
+    this.mostrarLista = true;
+    this.mostrarFormulario = false;
+    this.ngOnInit();
+  }
+
+  cargarOrganismos(){
+    this.apiLaura.getOrganismos().subscribe(data=>{
+      this.organismos = data;
+    });
   }
 }
