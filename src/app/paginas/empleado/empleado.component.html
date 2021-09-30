@@ -1,6 +1,6 @@
 <mat-card *ngIf="mostrarLista">
   <mat-card-title>Empleados
-    
+
   </mat-card-title>
   <mat-card-actions>
     <button mat-button (click)="nuevo()">NUEVO</button>
@@ -8,27 +8,53 @@
   <mat-card-content>
     <div class="mat-elevation-z8" >
       <table mat-table class="full-width-table" matSort aria-label="Elements">
+
         <!-- Id Column -->
         <ng-container matColumnDef="id">
           <th mat-header-cell *matHeaderCellDef mat-sort-header>Id</th>
           <td mat-cell *matCellDef="let row">{{row.id}}</td>
         </ng-container>
-    
-        <!-- Name Column -->
+
+         <!-- nombre Column -->
         <ng-container matColumnDef="nombre">
           <th mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</th>
           <td mat-cell *matCellDef="let row">{{row.nombre}}</td>
         </ng-container>
-        <!-- Name Column -->
+
+         <!-- apellido Column -->
         <ng-container matColumnDef="apellido">
           <th mat-header-cell *matHeaderCellDef mat-sort-header>Apellido</th>
           <td mat-cell *matCellDef="let row">{{row.apellido}}</td>
         </ng-container>
-    
+
+         <!-- cuil Column -->
+         <ng-container matColumnDef="cuil">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Cuil</th>
+          <td mat-cell *matCellDef="let row">{{row.cuil}}</td>
+        </ng-container>
+
+         <!-- mail Column -->
+          <ng-container matColumnDef="mail">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Mail</th>
+            <td mat-cell *matCellDef="let row">{{row.mail}}</td>
+          </ng-container>
+
+         <!-- Organismo Column -->
+          <ng-container matColumnDef="organismo">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>organismo</th>
+            <td mat-cell *matCellDef="let row">{{row.organismo}}</td>
+          </ng-container>
+
+          <!-- Cargo Column -->
+          <ng-container matColumnDef="cargo">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>cargo</th>
+            <td mat-cell *matCellDef="let row">{{row.cargo}}</td>
+          </ng-container>
+
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
       </table>
-    
+
       <mat-paginator #paginator
           [length]="dataSource?.data?.length"
           [pageIndex]="0"
