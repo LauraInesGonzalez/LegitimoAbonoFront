@@ -23,7 +23,7 @@ export class EmpleadoComponent implements AfterViewInit, OnInit {
   organismos: any[] = []
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['id', 'nombre', 'apellido'];
+  displayedColumns = ['id', 'nombre', 'apellido', 'cuil', 'organismo', 'cargo'];
 
   constructor(
     private api: ApiArielService,
@@ -40,7 +40,7 @@ export class EmpleadoComponent implements AfterViewInit, OnInit {
       this.dataSource.paginator = this.paginator;
       this.table.dataSource = this.dataSource;
       },error=>{});
-      
+
   }
 
   ngAfterViewInit(): void {
