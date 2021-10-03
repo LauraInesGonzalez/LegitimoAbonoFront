@@ -52,6 +52,12 @@ export class EmpleadoComponent implements AfterViewInit, OnInit {
     this.cargarOrganismos();
   }
 
+  aceptar(){
+    this.mostrarLista = true;
+    this.mostrarFormulario = false;
+    this.ngOnInit();
+  }
+
   cancelar(){
     this.mostrarLista = true;
     this.mostrarFormulario = false;

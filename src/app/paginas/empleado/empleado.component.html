@@ -71,22 +71,31 @@
   <mat-card-title>Nuevo Empleado</mat-card-title>
   <mat-card-content class="formulario">
     <mat-form-field appearance="fill">
-      <mat-label>Input</mat-label>
+      <mat-label>Nombre</mat-label>
       <input matInput>
     </mat-form-field>
     <mat-form-field appearance="fill">
-      <mat-label>Select</mat-label>
+      <mat-label>Apellido</mat-label>
+      <input matInput>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Cuil</mat-label>
+      <input matInput>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Organismo</mat-label>
       <mat-select>
         <mat-option *ngFor="let organismo of organismos" value="organismo.id">{{organismo.denominacion}}</mat-option>
       </mat-select>
     </mat-form-field>
     <mat-form-field appearance="fill">
-      <mat-label>Text2</mat-label>
-      <textarea matInput></textarea>
+      <mat-label>Cargo</mat-label>
+      <input matInput>
     </mat-form-field>
   </mat-card-content>
   <mat-card-actions>
+    <button mat-button (click)="aceptar()">INGRESAR</button>
     <button mat-button (click)="cancelar()">CANCELAR</button>
-      </mat-card-actions>
+          </mat-card-actions>
 </mat-card>
 
