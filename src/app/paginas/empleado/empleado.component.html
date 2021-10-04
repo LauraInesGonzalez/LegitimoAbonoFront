@@ -66,31 +66,34 @@
   </mat-card-content>
 </mat-card>
 
-
 <mat-card *ngIf="mostrarFormulario">
   <mat-card-title>Nuevo Empleado</mat-card-title>
   <mat-card-content class="formulario">
     <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input matInput name="mail" [(ngModel)]="objeto.mail" #mail="ngModel">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
       <mat-label>Nombre</mat-label>
-      <input matInput>
+      <input matInput name="nombre" [(ngModel)]="objeto.nombre" #nombre="ngModel">
     </mat-form-field>
     <mat-form-field appearance="fill">
       <mat-label>Apellido</mat-label>
-      <input matInput>
+      <input matInput name="apellido" [(ngModel)]="objeto.apellido" #apellido="ngModel">
     </mat-form-field>
     <mat-form-field appearance="fill">
       <mat-label>Cuil</mat-label>
-      <input matInput>
+      <input matInput  name="cuil" [(ngModel)]="objeto.cuil" #cuil="ngModel" placeholder="00-00000000-0">
     </mat-form-field>
     <mat-form-field appearance="fill">
       <mat-label>Organismo</mat-label>
-      <mat-select>
-        <mat-option *ngFor="let organismo of organismos" value="organismo.id">{{organismo.denominacion}}</mat-option>
+      <mat-select  name="idOrganismo" [(ngModel)]="objeto.idOrganismo" #idOrganismo="ngModel">
+        <mat-option *ngFor="let organismo of organismos" [value]="organismo.id">{{organismo.denominacion}}</mat-option>
       </mat-select>
     </mat-form-field>
     <mat-form-field appearance="fill">
       <mat-label>Cargo</mat-label>
-      <input matInput>
+      <input matInput name="cargo" [(ngModel)]="objeto.cargo" #cargo="ngModel">
     </mat-form-field>
   </mat-card-content>
   <mat-card-actions>

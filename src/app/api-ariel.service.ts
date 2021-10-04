@@ -14,4 +14,15 @@ export class ApiArielService {
     return this.http.get<EmpleadoItem[]>('http://127.0.0.1:5500/empleado');
 
   }
+
+  postEmpleado(objeto: EmpleadoItem){
+    return this.http.post('http://127.0.0.1:5500/empleado',{
+      cuil: objeto.cuil,
+      apellido: objeto.apellido,
+      nombre: objeto.nombre,
+      mail: objeto.mail,
+      idOrganismo: objeto.idOrganismo,
+      cargo: objeto.cargo
+    })
+  }
 }

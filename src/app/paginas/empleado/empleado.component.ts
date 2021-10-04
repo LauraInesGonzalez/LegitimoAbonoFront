@@ -5,6 +5,11 @@ import { MatTable } from '@angular/material/table';
 import { ApiArielService } from 'src/app/api-ariel.service';
 import { ApiLauraService } from 'src/app/api-laura.service';
 import { EmpleadoDataSource, EmpleadoItem } from './empleado-datasource';
+import {
+  MatSnackBar,
+  MatSnackBarHorizontalPosition,
+  MatSnackBarVerticalPosition,
+} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-empleado',
@@ -19,8 +24,18 @@ export class EmpleadoComponent implements AfterViewInit, OnInit {
 
   mostrarLista: boolean = true;
   mostrarFormulario: boolean = false;
+  horizontalPosition: MatSnackBarHorizontalPosition = 'end';
+  verticalPosition: MatSnackBarVerticalPosition = 'top';
 
-  organismos: any[] = []
+  organismos: any[] = [];
+  objeto: EmpleadoItem ={id: 0,
+    cuil: '',
+    apellido: '',
+    nombre: '',
+    mail: '',
+    idOrganismo: 0,
+    cargo: '',
+    eliminado: null}
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['id', 'nombre', 'apellido', 'cuil', 'organismo', 'cargo'];
@@ -28,6 +43,7 @@ export class EmpleadoComponent implements AfterViewInit, OnInit {
   constructor(
     private api: ApiArielService,
     private apiLaura: ApiLauraService,
+    private _snackBar: MatSnackBar
     ) {
     this.dataSource = new EmpleadoDataSource();
   }
@@ -47,15 +63,42 @@ export class EmpleadoComponent implements AfterViewInit, OnInit {
   }
 
   nuevo(){
+    this.objeto= {id: 0,
+      cuil: '',
+      apellido: '',
+      nombre: '',
+      mail: '',
+      idOrganismo: 0,
+      cargo: '',
+      eliminado: null}
+
     this.mostrarLista = false;
     this.mostrarFormulario = true;
     this.cargarOrganismos();
   }
 
   aceptar(){
-    this.mostrarLista = true;
-    this.mostrarFormulario = false;
-    this.ngOnInit();
+    console.log(this.objeto);
+
+    this.api.postEmpleado(this.objeto).subscribe(
+      data=>{
+        this._snackBar.open('Exito: Los datos se guardaron correctamente','',{
+          horizontalPosition: this.horizontalPosition,
+          verticalPosition: this.verticalPosition,
+          duration: 5000
+        });
+        this.mostrarLista = true;
+        this.mostrarFormulario = false;
+        this.ngOnInit();
+      },error=>{
+        this._snackBar.open(error['error']['error'],'Aceptar',{
+          horizontalPosition: this.horizontalPosition,
+          verticalPosition: this.verticalPosition,
+        });
+        //console.log(error['error']);
+
+    })
+    
   }
 
   cancelar(){
