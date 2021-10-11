@@ -29,6 +29,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { UsuarioComponent } from './paginas/usuario/usuario.component';
+import { LoginComponent } from './paginas/login/login.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,9 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     TableroComponent,
     EmpleadoComponent,
     OrganismoComponent,
-    DireccionComponent
+    DireccionComponent,
+    UsuarioComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

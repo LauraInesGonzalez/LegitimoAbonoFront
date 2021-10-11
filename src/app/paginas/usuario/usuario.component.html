@@ -1,0 +1,122 @@
+<mat-card *ngIf="mostrarLista">
+    <mat-card-title>Usuarios
+  
+    </mat-card-title>
+    <mat-card-actions>
+      <button mat-button (click)="nuevo()">NUEVO</button>
+    </mat-card-actions>
+    <mat-card-content>
+      <div class="mat-elevation-z8" >
+        <table mat-table class="full-width-table" matSort aria-label="Elements">
+  
+          <!-- Id Column -->
+          <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Id</th>
+            <td mat-cell *matCellDef="let row">{{row.id}}</td>
+          </ng-container>
+  
+           <!-- usuario Column -->
+           <ng-container matColumnDef="usuario">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Usuario</th>
+            <td mat-cell *matCellDef="let row">{{row.usuario}}</td>
+          </ng-container>
+  
+           <!-- nombre Column -->
+          <ng-container matColumnDef="nombre">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</th>
+            <td mat-cell *matCellDef="let row">{{row.nombre}}</td>
+          </ng-container>
+  
+           <!-- apellido Column -->
+          <ng-container matColumnDef="apellido">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Apellido</th>
+            <td mat-cell *matCellDef="let row">{{row.apellido}}</td>
+          </ng-container>
+  
+           <!-- rol Column -->
+           <ng-container matColumnDef="rol">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Rol</th>
+            <td mat-cell *matCellDef="let row">{{row.rol}}</td>
+          </ng-container>
+
+           <!-- mail Column -->
+            <ng-container matColumnDef="mail">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Mail</th>
+              <td mat-cell *matCellDef="let row">{{row.mail}}</td>
+            </ng-container>
+  
+           <!-- Accion Column -->
+            <ng-container matColumnDef="accion">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
+              <td mat-cell *matCellDef="let row">
+                <button mat-mini-fab color="warn" aria-label="Example icon button with a menu icon" (click)="eliminar(row)">
+                  <mat-icon>delete</mat-icon>
+                </button>
+                <button mat-mini-fab color="primary" aria-label="Example icon button with a menu icon" (click)="editar(row)">
+                  <mat-icon>key</mat-icon>
+                </button>
+              </td>
+            </ng-container>
+  
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+  
+        <mat-paginator #paginator
+            [length]="dataSource?.data?.length"
+            [pageIndex]="0"
+            [pageSize]="10"
+            [pageSizeOptions]="[5, 10, 20]"
+            aria-label="Select page">
+        </mat-paginator>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  
+  <mat-card *ngIf="mostrarFormulario">
+    <mat-card-title *ngIf="!editando">Nuevo Usuario</mat-card-title>
+    <mat-card-title *ngIf="editando">Modificar Contraseña</mat-card-title>
+    <mat-card-content class="formulario">
+        <mat-form-field appearance="fill" *ngIf="!editando">
+            <mat-label>Usuario</mat-label>
+            <input matInput name="usuario" [(ngModel)]="objeto.usuario" #usuario="ngModel">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" *ngIf="!editando">
+          <mat-label>Cuil</mat-label>
+          <input matInput name="cuil" [(ngModel)]="objeto.cuil" #cuil="ngModel">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" *ngIf="!editando">
+            <mat-label>Email</mat-label>
+            <input matInput name="mail" [(ngModel)]="objeto.mail" #mail="ngModel">
+        </mat-form-field>
+
+      <mat-form-field appearance="fill">
+            <mat-label>Contraseña</mat-label>
+            <input type="password" matInput name="contrasenia" [(ngModel)]="objeto.contrasenia" #contrasenia="ngModel">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Repetir Contraseña</mat-label>
+        <input type="password" matInput name="repiteContrasenia" [(ngModel)]="objeto.repiteContrasenia" #repiteContrasenia="ngModel">
+      </mat-form-field>
+    
+      <mat-form-field appearance="fill" *ngIf="!editando">
+            <mat-label>Rol</mat-label>
+            <mat-select  name="idRol" [(ngModel)]="objeto.idRol" #idRol="ngModel">
+              <mat-option [value]=1>ADMINISTRADOR</mat-option>
+              <!-- <mat-option [value]=2>PROVEEDOR</mat-option> -->
+              <mat-option [value]=3>SUPERIOR</mat-option>
+              <mat-option [value]=4>EMPLEADO</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </mat-card-content>
+    <mat-card-actions>
+      <button mat-button (click)="modificar()" *ngIf="editando">INGRESAR</button>
+      <button mat-button (click)="aceptar()" *ngIf="!editando">INGRESAR</button>
+      <button mat-button (click)="cancelar()">CANCELAR</button>
+            </mat-card-actions>
+  </mat-card>
+  
+  

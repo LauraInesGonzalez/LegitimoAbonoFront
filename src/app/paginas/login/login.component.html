@@ -1,0 +1,23 @@
+<mat-card>
+    <mat-card-content>
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <h2>Ingreso</h2>
+        <mat-error *ngIf="loginInvalid">
+          El Usuario y la Contraseña no fueron reconicidos
+        </mat-error>
+        <mat-form-field class="full-width-input">
+          <input matInput placeholder="Usuario" formControlName="username" required>
+          <mat-error>
+            Ingrese un Usuario válido
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="full-width-input">
+          <input matInput type="password" placeholder="Password" formControlName="password" required>
+          <mat-error>
+            Ingrese una Contraseña válida
+          </mat-error>
+        </mat-form-field>
+        <button mat-raised-button color="primary">Ingresar</button>
+      </form>
+    </mat-card-content>
+  </mat-card>

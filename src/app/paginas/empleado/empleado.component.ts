@@ -24,6 +24,7 @@ export class EmpleadoComponent implements AfterViewInit, OnInit {
 
   mostrarLista: boolean = true;
   mostrarFormulario: boolean = false;
+  editando: boolean = false;
   horizontalPosition: MatSnackBarHorizontalPosition = 'end';
   verticalPosition: MatSnackBarVerticalPosition = 'top';
 
@@ -38,7 +39,7 @@ export class EmpleadoComponent implements AfterViewInit, OnInit {
     eliminado: null}
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['id', 'nombre', 'apellido', 'cuil', 'organismo', 'cargo'];
+  displayedColumns = ['id', 'nombre', 'apellido', 'cuil', 'organismo', 'cargo', 'accion'];
 
   constructor(
     private api: ApiArielService,
@@ -50,19 +51,27 @@ export class EmpleadoComponent implements AfterViewInit, OnInit {
   ngOnInit(): void {
     //this.dataSource.data = this.api.getEmpleados();
 
+    this.cargarLista();
+
+  }
+
+  cargarLista(){
     this.api.getEmpleados().subscribe(data=>{
       this.dataSource.data = data;
-      this.dataSource.sort = this.sort;
-      this.dataSource.paginator = this.paginator;
-      this.table.dataSource = this.dataSource;
+      this.table.dataSource = this.dataSource.connect();
       },error=>{});
-
   }
 
   ngAfterViewInit(): void {
+    this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
+    this.table.dataSource = this.dataSource;
+
   }
 
   nuevo(){
+
+    this.editando = false;
     this.objeto= {id: 0,
       cuil: '',
       apellido: '',
@@ -71,6 +80,16 @@ export class EmpleadoComponent implements AfterViewInit, OnInit {
       idOrganismo: 0,
       cargo: '',
       eliminado: null}
+
+    this.mostrarLista = false;
+    this.mostrarFormulario = true;
+    this.cargarOrganismos();
+  }
+
+  editar(o:EmpleadoItem){
+    this.editando = true;
+    this.objeto = o;
+    //console.log(o);
 
     this.mostrarLista = false;
     this.mostrarFormulario = true;
@@ -89,7 +108,32 @@ export class EmpleadoComponent implements AfterViewInit, OnInit {
         });
         this.mostrarLista = true;
         this.mostrarFormulario = false;
-        this.ngOnInit();
+        this.cargarLista();
+      },error=>{
+        this._snackBar.open(error['error']['error'],'Aceptar',{
+          horizontalPosition: this.horizontalPosition,
+          verticalPosition: this.verticalPosition,
+        });
+        //console.log(error['error']);
+
+    })
+    
+  }
+
+  modificar(){
+    console.log(this.objeto);
+
+    this.api.putEmpleado(this.objeto).subscribe(
+      data=>{
+        console.log(data);
+        this._snackBar.open('Exito: Los datos se guardaron correctamente','',{
+          horizontalPosition: this.horizontalPosition,
+          verticalPosition: this.verticalPosition,
+          duration: 5000
+        });
+        this.mostrarLista = true;
+        this.mostrarFormulario = false;
+        this.cargarLista();
       },error=>{
         this._snackBar.open(error['error']['error'],'Aceptar',{
           horizontalPosition: this.horizontalPosition,
@@ -104,12 +148,38 @@ export class EmpleadoComponent implements AfterViewInit, OnInit {
   cancelar(){
     this.mostrarLista = true;
     this.mostrarFormulario = false;
-    this.ngOnInit();
+    this.cargarLista();
   }
 
   cargarOrganismos(){
     this.apiLaura.getOrganismos().subscribe(data=>{
       this.organismos = data;
     });
+  }
+
+  eliminar(o: EmpleadoItem){
+    console.log(this.objeto);
+
+    this.api.deleteEmpleado(o).subscribe(
+      data=>{
+        console.log(data);
+        this._snackBar.open('Exito: Los datos se guardaron correctamente','',{
+          horizontalPosition: this.horizontalPosition,
+          verticalPosition: this.verticalPosition,
+          duration: 5000
+        });
+        this.mostrarLista = true;
+        this.mostrarFormulario = false;
+        this.cargarLista();
+      },error=>{
+        this._snackBar.open(error['error']['error'],'Aceptar',{
+          horizontalPosition: this.horizontalPosition,
+          verticalPosition: this.verticalPosition,
+        });
+        //console.log(error['error']);
+
+    })
+    
+
   }
 }
