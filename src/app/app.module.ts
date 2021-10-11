@@ -31,6 +31,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { UsuarioComponent } from './paginas/usuario/usuario.component';
 import { LoginComponent } from './paginas/login/login.component';
+import { LegitimoAbonoComponent } from './paginas/legitimo-abono/legitimo-abono.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { LoginComponent } from './paginas/login/login.component';
     OrganismoComponent,
     DireccionComponent,
     UsuarioComponent,
-    LoginComponent
+    LoginComponent,
+    LegitimoAbonoComponent
   ],
   imports: [
     BrowserModule,
