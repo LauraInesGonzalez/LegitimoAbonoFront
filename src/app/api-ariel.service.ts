@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { EmpleadoItem } from './paginas/empleado/empleado-datasource';
 import { environment } from 'src/environments/environment';
+import { AbonoItem} from './paginas/legitimo-abono/legitimo-abono.datasource';
 
 @Injectable({
   providedIn: 'root'
@@ -45,6 +46,50 @@ export class ApiArielService {
 
   deleteEmpleado(objeto: EmpleadoItem){
     return this.http.delete(`${this.API_URL}/empleado/${objeto.id}`,
+    {headers:{'authorization':localStorage.getItem('Token')||''}});
+  }
+
+  getAbono(){
+
+    return this.http.get<AbonoItem[]>(`${this.API_URL}/abono`,
+    {headers:{'authorization':localStorage.getItem('Token')||''}});
+
+  }
+
+  postAbono(objeto: AbonoItem){
+    return this.http.post(`${this.API_URL}/abono`,{
+      organismo: objeto.organismo,
+      proveedor: objeto.proveedor,
+      descripcion: objeto.descripcion,
+      fechaInicio: objeto.fechaInicio,
+      fechaFin: objeto.fechaFin,
+      monto: objeto.monto,
+      justificacion: objeto.justificacion,
+      actoDispositivo: objeto.actoDispositivo,
+      idusuario: objeto.idusuario,
+      fecha: objeto.fecha
+    },
+    {headers:{'authorization':localStorage.getItem('Token')||''}})
+  }
+
+  putAbono(objeto: AbonoItem){
+    return this.http.put(`${this.API_URL}/abono/${objeto.organismo}`,{
+      organismo: objeto.organismo,
+      proveedor: objeto.proveedor,
+      descripcion: objeto.descripcion,
+      fechaInicio: objeto.fechaInicio,
+      fechaFin: objeto.fechaFin,
+      monto: objeto.monto,
+      justificacion: objeto.justificacion,
+      actoDispositivo: objeto.actoDispositivo,
+      idusuario: objeto.idusuario,
+      fecha: objeto.fecha
+    },
+    {headers:{'authorization':localStorage.getItem('Token')||''}})
+  }
+
+  deleteAbono(objeto: AbonoItem){
+    return this.http.delete(`${this.API_URL}/abono/${objeto.organismo}`,
     {headers:{'authorization':localStorage.getItem('Token')||''}});
   }
 
