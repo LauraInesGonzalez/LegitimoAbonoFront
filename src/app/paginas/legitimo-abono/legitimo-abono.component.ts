@@ -30,7 +30,7 @@ export class LegitimoAbonoComponent implements AfterViewInit, OnInit {
 
   organismos: any[] = [];
   objeto: AbonoItem ={
-    organismo: 0,
+    idOrganismo: 0,
     proveedor: '',
     descripcion: '',
     fechaInicio: '',
@@ -76,7 +76,7 @@ export class LegitimoAbonoComponent implements AfterViewInit, OnInit {
   nuevo(){
 
     this.editando = false;
-    this.objeto= { organismo: 0,
+    this.objeto= { idOrganismo: 0,
       proveedor: '',
       descripcion: '',
       fechaInicio: '',

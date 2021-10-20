@@ -58,7 +58,7 @@ export class ApiArielService {
 
   postAbono(objeto: AbonoItem){
     return this.http.post(`${this.API_URL}/abono`,{
-      organismo: objeto.organismo,
+      organismo: objeto.idOrganismo,
       proveedor: objeto.proveedor,
       descripcion: objeto.descripcion,
       fechaInicio: objeto.fechaInicio,
@@ -73,8 +73,8 @@ export class ApiArielService {
   }
 
   putAbono(objeto: AbonoItem){
-    return this.http.put(`${this.API_URL}/abono/${objeto.organismo}`,{
-      organismo: objeto.organismo,
+    return this.http.put(`${this.API_URL}/abono/${objeto.idOrganismo}`,{
+      organismo: objeto.idOrganismo,
       proveedor: objeto.proveedor,
       descripcion: objeto.descripcion,
       fechaInicio: objeto.fechaInicio,
@@ -89,7 +89,7 @@ export class ApiArielService {
   }
 
   deleteAbono(objeto: AbonoItem){
-    return this.http.delete(`${this.API_URL}/abono/${objeto.organismo}`,
+    return this.http.delete(`${this.API_URL}/abono/${objeto.idOrganismo}`,
     {headers:{'authorization':localStorage.getItem('Token')||''}});
   }
 
