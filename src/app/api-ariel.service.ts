@@ -58,7 +58,7 @@ export class ApiArielService {
 
   postAbono(objeto: AbonoItem){
     return this.http.post(`${this.API_URL}/abono`,{
-      organismo: objeto.idOrganismo,
+      organismo: objeto.organismo,
       proveedor: objeto.proveedor,
       descripcion: objeto.descripcion,
       fechaInicio: objeto.fechaInicio,
@@ -66,15 +66,15 @@ export class ApiArielService {
       monto: objeto.monto,
       justificacion: objeto.justificacion,
       actoDispositivo: objeto.actoDispositivo,
-      idusuario: objeto.idusuario,
+      idUsuario: objeto.idUsuario,
       fecha: objeto.fecha
     },
     {headers:{'authorization':localStorage.getItem('Token')||''}})
   }
 
   putAbono(objeto: AbonoItem){
-    return this.http.put(`${this.API_URL}/abono/${objeto.idOrganismo}`,{
-      organismo: objeto.idOrganismo,
+    return this.http.put(`${this.API_URL}/abono/${objeto.organismo}`,{
+      organismo: objeto.organismo,
       proveedor: objeto.proveedor,
       descripcion: objeto.descripcion,
       fechaInicio: objeto.fechaInicio,
@@ -82,14 +82,14 @@ export class ApiArielService {
       monto: objeto.monto,
       justificacion: objeto.justificacion,
       actoDispositivo: objeto.actoDispositivo,
-      idusuario: objeto.idusuario,
+      idUsuario: objeto.idUsuario,
       fecha: objeto.fecha
     },
     {headers:{'authorization':localStorage.getItem('Token')||''}})
   }
 
   deleteAbono(objeto: AbonoItem){
-    return this.http.delete(`${this.API_URL}/abono/${objeto.idOrganismo}`,
+    return this.http.delete(`${this.API_URL}/abono/${objeto.organismo}`,
     {headers:{'authorization':localStorage.getItem('Token')||''}});
   }
 

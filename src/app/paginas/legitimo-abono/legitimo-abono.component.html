@@ -10,56 +10,56 @@
       <table mat-table class="full-width-table" matSort aria-label="Elements">
 
         <!-- Id Column -->
-        <ng-container matColumnDef="organismo">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>organismo</th>
+        <ng-container matColumnDef="Organismo">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Organismo</th>
           <td mat-cell *matCellDef="let row">{{row.organismo}}</td>
         </ng-container>
 
          <!-- nombre Column -->
-        <ng-container matColumnDef="proveedor">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>proveedor</th>
+        <ng-container matColumnDef="Proveedor">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Proveedor</th>
           <td mat-cell *matCellDef="let row">{{row.proveedor}}</td>
         </ng-container>
 
          <!-- apellido Column -->
-        <ng-container matColumnDef="fecha inicio">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>fecha inicio</th>
+        <ng-container matColumnDef="FechaInicio">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Fecha inicio</th>
           <td mat-cell *matCellDef="let row">{{row.fechainicio}}</td>
         </ng-container>
 
          <!-- cuil Column -->
-         <ng-container matColumnDef="fecha fin">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>fecha fin</th>
+         <ng-container matColumnDef="FechaFinalizacion">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Fecha Finalizacion</th>
           <td mat-cell *matCellDef="let row">{{row.fechafin}}</td>
         </ng-container>
 
          <!-- mail Column -->
-          <ng-container matColumnDef="monto">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>monto</th>
+          <ng-container matColumnDef="Monto">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Monto</th>
             <td mat-cell *matCellDef="let row">{{row.monto}}</td>
           </ng-container>
 
          <!-- Organismo Column -->
-          <ng-container matColumnDef="justificacion">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>justificacion</th>
+          <ng-container matColumnDef="Justificacion">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Justificación</th>
             <td mat-cell *matCellDef="let row">{{row.justificacion}}</td>
           </ng-container>
 
           <!-- Cargo Column -->
-          <ng-container matColumnDef="acto dispositivo">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>acto dispositivo</th>
+          <ng-container matColumnDef="ActoDispositivo">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Acto Dispositivo</th>
             <td mat-cell *matCellDef="let row">{{row.actodispositivo}}</td>
           </ng-container>
 
           <!-- usuario Column -->
-          <ng-container matColumnDef="usuario">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>usuario</th>
+          <ng-container matColumnDef="Usuario">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Usuario</th>
             <td mat-cell *matCellDef="let row">{{row.usuario}}</td>
           </ng-container>
 
           <!-- fecha Column -->
-          <ng-container matColumnDef="fecha">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>fecha</th>
+          <ng-container matColumnDef="Fecha">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Fecha</th>
             <td mat-cell *matCellDef="let row">{{row.fecha}}</td>
           </ng-container>
 
@@ -97,45 +97,44 @@
   <mat-card-content class="formulario">
     <mat-form-field appearance="fill">
       <mat-label>Organismo</mat-label>
-      <input matInput name="organismo" [(ngModel)]="objeto.idOrganismo" #organismo="ngModel">
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-      <mat-label>proveedor</mat-label>
-      <input matInput name="proveedor" [(ngModel)]="objeto.proveedor" #proveedor="ngModel">
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-      <mat-label>Descripcion</mat-label>
-      <input matInput name="descripcion" [(ngModel)]="objeto.descripcion" #descripcion="ngModel">
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-      <mat-label>fecha Inicio</mat-label>
-      <input matInput  name="fecha Inicio" [(ngModel)]="objeto.fechaInicio" #fechaInicio="ngModel" placeholder="00-00000000-0">
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-      <mat-label>fecha Fin</mat-label>
-      <input matInput  name="fecha Fin" [(ngModel)]="objeto.fechaFin" #fechaFin="ngModel" placeholder="00-00000000-0">
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-      <mat-label>monto</mat-label>
-      <input matInput  name="monto" [(ngModel)]="objeto.monto" #monto="ngModel" placeholder="00-00000000-0">
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-      <mat-label>justificacion</mat-label>
-      <input matInput  name="justificacion" [(ngModel)]="objeto.justificacion" #justificacion="ngModel" placeholder="00-00000000-0">
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-      <mat-label>acto Dispositivo</mat-label>
-      <input matInput  name="acto Dispositivo" [(ngModel)]="objeto.actoDispositivo" #actoDispositivo="ngModel" placeholder="00-00000000-0">
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-      <mat-label>Usuario</mat-label>
-      <mat-select  name="idusuario" [(ngModel)]="objeto.idusuario" #idusuario="ngModel">
+      <mat-select  name="organismo" [(ngModel)]="objeto.organismo" #organismo="ngModel">
         <mat-option *ngFor="let organismo of organismos" [value]="organismo.id">{{organismo.denominacion}}</mat-option>
       </mat-select>
     </mat-form-field>
     <mat-form-field appearance="fill">
-      <mat-label>Fecha</mat-label>
-      <input matInput name="fecha" [(ngModel)]="objeto.fecha" #fecha="ngModel">
+      <mat-label>Proveedor (CUIT)</mat-label>
+      <input matInput name="proveedor" [(ngModel)]="objeto.proveedor" #proveedor="ngModel" placeholder="00-00000000-0">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Descripción</mat-label>
+      <input matInput name="descripcion" [(ngModel)]="objeto.descripcion" #descripcion="ngModel">
+    </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Fecha Inicio</mat-label>
+        <input matInput [matDatepicker]="picker"  name="fechaInicio" [(ngModel)]="objeto.fechaInicio" #fechaInicio="ngModel">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Fecha Fin</mat-label>
+        <input matInput [matDatepicker]="picker2"  name="fechaFin" [(ngModel)]="objeto.fechaFin" #fechaFin="ngModel">
+        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker #picker2></mat-datepicker>
+      </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Monto</mat-label>
+      <input matInput  name="monto" [(ngModel)]="objeto.monto" #monto="ngModel" placeholder="00-00000000-0">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Justificación</mat-label>
+      <input matInput  name="justificacion" [(ngModel)]="objeto.justificacion" #justificacion="ngModel">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Acto Dispositivo {{nombreArchivo}}</mat-label>
+      <input matInput style="display: none;" >
+      <input type="file" name="acto Dispositivo" [(ngModel)]="objeto.actoDispositivo" #actoDispositivo="ngModel">
     </mat-form-field>
   </mat-card-content>
   <mat-card-actions>

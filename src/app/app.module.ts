@@ -32,6 +32,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { UsuarioComponent } from './paginas/usuario/usuario.component';
 import { LoginComponent } from './paginas/login/login.component';
 import { LegitimoAbonoComponent } from './paginas/legitimo-abono/legitimo-abono.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -69,7 +71,9 @@ import { LegitimoAbonoComponent } from './paginas/legitimo-abono/legitimo-abono.
     MatRadioModule,
     ReactiveFormsModule,
     FormsModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [],
   bootstrap: [AppComponent]

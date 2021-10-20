@@ -27,10 +27,11 @@ export class LegitimoAbonoComponent implements AfterViewInit, OnInit {
   editando: boolean = false;
   horizontalPosition: MatSnackBarHorizontalPosition = 'end';
   verticalPosition: MatSnackBarVerticalPosition = 'top';
+  nombreArchivo: string = '';
 
   organismos: any[] = [];
   objeto: AbonoItem ={
-    idOrganismo: 0,
+    organismo: 0,
     proveedor: '',
     descripcion: '',
     fechaInicio: '',
@@ -38,12 +39,12 @@ export class LegitimoAbonoComponent implements AfterViewInit, OnInit {
     monto: 0,
     justificacion: '',
     actoDispositivo: '',
-    idusuario: 0,
+    idUsuario: 0,
     fecha: '',
   }
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['Organismo', 'Proveedor', 'Descripcion', 'Fecha inicio', 'Fecha Finalizacion', 'monto', 'Justificacion', 'Acto Dispositivo', 'Usuario', 'Fecha' ];
+  displayedColumns = ['Organismo', 'Proveedor', 'FechaInicio', 'FechaFinalizacion', 'Monto', 'Justificacion', 'ActoDispositivo', 'Usuario', 'Fecha' ];
 
   constructor(
     private api: ApiArielService,
@@ -57,6 +58,22 @@ export class LegitimoAbonoComponent implements AfterViewInit, OnInit {
 
     this.cargarLista();
 
+  }
+
+  onFileSelected() {
+    const inputNode: any = document.querySelector('#file');
+  
+    if (typeof (FileReader) !== 'undefined') {
+      const reader = new FileReader();
+  
+      reader.onload = (e: any) => {
+        this.objeto.actoDispositivo = e.target.result;
+      };
+      console.log(inputNode.files[0]);
+      this.nombreArchivo = inputNode.files[0]['name'];
+  
+      reader.readAsArrayBuffer(inputNode.files[0]);
+    }
   }
 
   cargarLista(){
@@ -76,7 +93,7 @@ export class LegitimoAbonoComponent implements AfterViewInit, OnInit {
   nuevo(){
 
     this.editando = false;
-    this.objeto= { idOrganismo: 0,
+    this.objeto= { organismo: 0,
       proveedor: '',
       descripcion: '',
       fechaInicio: '',
@@ -84,7 +101,7 @@ export class LegitimoAbonoComponent implements AfterViewInit, OnInit {
       monto: 0,
       justificacion: '',
       actoDispositivo: '',
-      idusuario: 0,
+      idUsuario: 0,
       fecha: '',};
 
     this.mostrarLista = false;
@@ -105,24 +122,24 @@ export class LegitimoAbonoComponent implements AfterViewInit, OnInit {
   aceptar(){
     console.log(this.objeto);
 
-    this.api.postAbono(this.objeto).subscribe(
-      data=>{
-        this._snackBar.open('Exito: Los datos se guardaron correctamente','',{
-          horizontalPosition: this.horizontalPosition,
-          verticalPosition: this.verticalPosition,
-          duration: 5000
-        });
-        this.mostrarLista = true;
-        this.mostrarFormulario = false;
-        this.cargarLista();
-      },error=>{
-        this._snackBar.open(error['error']['error'],'Aceptar',{
-          horizontalPosition: this.horizontalPosition,
-          verticalPosition: this.verticalPosition,
-        });
-        //console.log(error['error']);
+    // this.api.postAbono(this.objeto).subscribe(
+    //   data=>{
+    //     this._snackBar.open('Exito: Los datos se guardaron correctamente','',{
+    //       horizontalPosition: this.horizontalPosition,
+    //       verticalPosition: this.verticalPosition,
+    //       duration: 5000
+    //     });
+    //     this.mostrarLista = true;
+    //     this.mostrarFormulario = false;
+    //     this.cargarLista();
+    //   },error=>{
+    //     this._snackBar.open(error['error']['error'],'Aceptar',{
+    //       horizontalPosition: this.horizontalPosition,
+    //       verticalPosition: this.verticalPosition,
+    //     });
+    //     //console.log(error['error']);
 
-    })
+    // })
 
   }
 

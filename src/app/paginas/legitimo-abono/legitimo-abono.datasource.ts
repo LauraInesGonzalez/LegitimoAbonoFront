@@ -7,7 +7,7 @@ import { Observable, of as observableOf, merge } from 'rxjs';
 
 // TODO: Replace this with your own data model type
 export interface AbonoItem {
-  idOrganismo: number;
+  organismo: number;
   proveedor: string;
   descripcion: string;
   fechaInicio: string;
@@ -15,7 +15,7 @@ export interface AbonoItem {
   monto: number;
   justificacion: string;
   actoDispositivo: any;
-  idusuario: number;
+  idUsuario: number;
   fecha: string;
 }
 
@@ -83,9 +83,9 @@ export class AbonoDataSource extends DataSource<AbonoItem> {
     return data.sort((a, b) => {
       const isAsc = this.sort?.direction === 'asc';
       switch (this.sort?.active) {
-        case 'organismo': return compare(a.idOrganismo, b.idOrganismo, isAsc);
+        case 'organismo': return compare(a.organismo, b.organismo, isAsc);
         case 'proveedor': return compare(a.proveedor, b.proveedor, isAsc);
-        case 'idusuario': return compare(+a.idusuario, +b.idusuario, isAsc);
+        case 'idUsuario': return compare(+a.idUsuario, +b.idUsuario, isAsc);
         default: return 0;
       }
     });
