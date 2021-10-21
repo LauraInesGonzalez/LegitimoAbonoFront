@@ -41,12 +41,8 @@ export class ApiLauraService {
 
   
   putUsuario(objeto: UsuarioItem){
-    return this.http.put(`${this.API_URL}/userinterno/${objeto.id}`,{
-      apellido: objeto.apellido,
-      nombre: objeto.nombre,
-      mail: objeto.mail,
-      rol: objeto.rol,
-      usuario: objeto.usuario
+    return this.http.put(`${this.API_URL}/userinterno/cambio/${objeto.usuario}`,{
+      contrasenia: objeto.contrasenia
     },
     {headers:{'authorization':localStorage.getItem('Token')||''}})
   }
