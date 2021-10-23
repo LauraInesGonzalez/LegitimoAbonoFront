@@ -24,13 +24,13 @@
          <!-- apellido Column -->
         <ng-container matColumnDef="FechaInicio">
           <th mat-header-cell *matHeaderCellDef mat-sort-header>Fecha inicio</th>
-          <td mat-cell *matCellDef="let row">{{row.fechainicio}}</td>
+          <td mat-cell *matCellDef="let row">{{row.fechaInicio}}</td>
         </ng-container>
 
          <!-- cuil Column -->
          <ng-container matColumnDef="FechaFinalizacion">
           <th mat-header-cell *matHeaderCellDef mat-sort-header>Fecha Finalizacion</th>
-          <td mat-cell *matCellDef="let row">{{row.fechafin}}</td>
+          <td mat-cell *matCellDef="let row">{{row.fechaFin}}</td>
         </ng-container>
 
          <!-- mail Column -->
@@ -48,7 +48,11 @@
           <!-- Cargo Column -->
           <ng-container matColumnDef="ActoDispositivo">
             <th mat-header-cell *matHeaderCellDef mat-sort-header>Acto Dispositivo</th>
-            <td mat-cell *matCellDef="let row">{{row.actodispositivo}}</td>
+            <td mat-cell *matCellDef="let row">
+              <button mat-button (click)="descargarAd(row.actoDispositivo)">
+                descargar
+              </button>
+              </td>
           </ng-container>
 
           <!-- usuario Column -->

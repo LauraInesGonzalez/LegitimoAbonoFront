@@ -51,13 +51,16 @@ export class ApiArielService {
 
   getAbono(){
 
-    return this.http.get<AbonoItem[]>(`${this.API_URL}/abono`,
+    return this.http.get<AbonoItem[]>(`${this.API_URL}/legitimoab`,
     {headers:{'authorization':localStorage.getItem('Token')||''}});
 
   }
-
+  descargarAd(archivo:String){
+     return this.http.get(`${this.API_URL}/legitimoab/download/${archivo}`,
+    {headers:{'authorization':localStorage.getItem('Token')||''},responseType: 'arraybuffer'} );
+  }
   postAbono(objeto: AbonoItem){
-    return this.http.post(`${this.API_URL}/abono`,{
+    return this.http.post(`${this.API_URL}/legitimoab`,{
       organismo: objeto.organismo,
       proveedor: objeto.proveedor,
       descripcion: objeto.descripcion,
@@ -73,7 +76,7 @@ export class ApiArielService {
   }
 
   putAbono(objeto: AbonoItem){
-    return this.http.put(`${this.API_URL}/abono/${objeto.organismo}`,{
+    return this.http.put(`${this.API_URL}/legitimoab/${objeto.organismo}`,{
       organismo: objeto.organismo,
       proveedor: objeto.proveedor,
       descripcion: objeto.descripcion,
@@ -89,7 +92,7 @@ export class ApiArielService {
   }
 
   deleteAbono(objeto: AbonoItem){
-    return this.http.delete(`${this.API_URL}/abono/${objeto.organismo}`,
+    return this.http.delete(`${this.API_URL}/legitimoab/${objeto.organismo}`,
     {headers:{'authorization':localStorage.getItem('Token')||''}});
   }
 

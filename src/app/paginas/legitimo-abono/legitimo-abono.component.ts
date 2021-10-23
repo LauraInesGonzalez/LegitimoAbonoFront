@@ -82,7 +82,13 @@ export class LegitimoAbonoComponent implements AfterViewInit, OnInit {
       this.table.dataSource = this.dataSource.connect();
       },error=>{});
   }
-
+  descargarAd(archivo:String):void{
+    this.api.descargarAd(archivo).subscribe(data=>{
+      var thefile = new Blob([data], { type: "application/pdf" });
+      let url = window.URL.createObjectURL(thefile);
+      window.open(url);
+    });
+  }
   ngAfterViewInit(): void {
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;

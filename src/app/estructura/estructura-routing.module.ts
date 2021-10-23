@@ -12,8 +12,31 @@ import { EstructuraComponent } from './estructura.component';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/tablero',
+    redirectTo: '/legitimo',
     pathMatch: 'full'
+  },
+  {
+    path: '',
+    component: EstructuraComponent,
+    children: [
+      {
+        path: 'legitimo',
+        component: LegitimoAbonoComponent,
+        data:{
+          role:"PERMIT_LOGIN"
+        },
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'organismo',
+        component: OrganismoComponent,
+        data:{
+          role:"PERMIT_LOGIN"
+        },
+        canActivate: [AuthGuard],
+      }
+      
+    ]
   },
   {
     path: 'login',
@@ -26,28 +49,27 @@ const routes: Routes = [
       {
         path: 'tablero',
         component: TableroComponent,
+        data:{
+          role:"PERMIT_ADMINISTRATE"
+        },
         canActivate: [AuthGuard],
       },
       {
         path: 'usuarios',
         component: UsuarioComponent,
+        data:{
+          role:"PERMIT_ADMINISTRATE"
+        },
         canActivate: [AuthGuard],
       },
       {
         path: 'empleado',
         component: EmpleadoComponent,
+        data:{
+          role:"PERMIT_ADMINISTRATE"
+        },
         canActivate: [AuthGuard],
-      },
-      {
-        path: 'legitimo',
-        component: LegitimoAbonoComponent,
-        canActivate: [AuthGuard],
-      },
-      {
-        path: 'organismo',
-        component: OrganismoComponent,
-        canActivate: [AuthGuard],
-      }
+      }      
     ]
   }
 ]

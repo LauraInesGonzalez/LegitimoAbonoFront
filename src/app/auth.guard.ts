@@ -14,15 +14,20 @@ export class AuthGuard implements CanActivate {
     state: RouterStateSnapshot,
     ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
-      const Logueado = localStorage.getItem('Logueado');
-      if(Logueado =="1"){
-        return true;
-      }
-      this.router.navigate(["/login"]);
-
-      return false;
-
-
+      return this.chequeoPermisos(route);
   }
-  
+  chequeoPermisos(route:ActivatedRouteSnapshot):boolean{
+    let chequeo=[];
+    let permisos=JSON.parse(localStorage.getItem('Permisos') || '[]');
+    
+    for (let i=0;i<permisos.length;i++){
+        chequeo.push(permisos[i].id);
+    }
+    if (chequeo.includes (route.data.role)){
+      return true;
+    }else{
+      this.router.navigate(["/login"]);
+      return false;
+    }
+  }
 }

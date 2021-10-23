@@ -45,7 +45,18 @@ export class LoginComponent implements OnInit {
             localStorage.clear();
             localStorage.setItem("Logueado","1");
             localStorage.setItem("Token",data['token']);
-            this.router.navigate(["/tablero"]);
+            console.log("data"+JSON.stringify(data.data.role))
+            localStorage.setItem("Permisos",JSON.stringify(data.data.role.role_permits))
+            let chequeo=[];
+            for (let i=0;i<data.data.role.role_permits.length;i++){
+              chequeo.push(data.data.role.role_permits[i].id);
+            }
+            if (chequeo.includes ("PERMIT_ADMINISTRATE")){
+              this.router.navigate(["/tablero"]);
+            }else{
+              this.router.navigate(["/legitimo"]);
+            }
+            
           },
           error=>{
             this.loginInvalid = true;
