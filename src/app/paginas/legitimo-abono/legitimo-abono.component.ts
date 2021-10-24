@@ -60,19 +60,10 @@ export class LegitimoAbonoComponent implements AfterViewInit, OnInit {
 
   }
 
-  onFileSelected() {
-    const inputNode: any = document.querySelector('#file');
-  
-    if (typeof (FileReader) !== 'undefined') {
-      const reader = new FileReader();
-  
-      reader.onload = (e: any) => {
-        this.objeto.actoDispositivo = e.target.result;
-      };
-      console.log(inputNode.files[0]);
-      this.nombreArchivo = inputNode.files[0]['name'];
-  
-      reader.readAsArrayBuffer(inputNode.files[0]);
+  onFileSelected(event:any) {
+    if (event.target.files.length>0){
+      const file=event.target.files[0];
+      this.objeto.actoDispositivo=event.target.files[0];
     }
   }
 
@@ -127,25 +118,24 @@ export class LegitimoAbonoComponent implements AfterViewInit, OnInit {
 
   aceptar(){
     console.log(this.objeto);
+    this.api.postAbono(this.objeto).subscribe(
+       data=>{
+         this._snackBar.open('Exito: Los datos se guardaron correctamente','',{
+           horizontalPosition: this.horizontalPosition,
+           verticalPosition: this.verticalPosition,
+           duration: 5000
+         });
+         this.mostrarLista = true;
+         this.mostrarFormulario = false;
+         this.cargarLista();
+       },error=>{
+         this._snackBar.open(error['error']['error'],'Aceptar',{
+           horizontalPosition: this.horizontalPosition,
+           verticalPosition: this.verticalPosition,
+         });
+         console.log(error['error']);
 
-    // this.api.postAbono(this.objeto).subscribe(
-    //   data=>{
-    //     this._snackBar.open('Exito: Los datos se guardaron correctamente','',{
-    //       horizontalPosition: this.horizontalPosition,
-    //       verticalPosition: this.verticalPosition,
-    //       duration: 5000
-    //     });
-    //     this.mostrarLista = true;
-    //     this.mostrarFormulario = false;
-    //     this.cargarLista();
-    //   },error=>{
-    //     this._snackBar.open(error['error']['error'],'Aceptar',{
-    //       horizontalPosition: this.horizontalPosition,
-    //       verticalPosition: this.verticalPosition,
-    //     });
-    //     //console.log(error['error']);
-
-    // })
+    })
 
   }
 

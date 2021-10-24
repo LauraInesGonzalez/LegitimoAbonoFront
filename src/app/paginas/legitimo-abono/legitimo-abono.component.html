@@ -138,7 +138,8 @@
     <mat-form-field appearance="fill">
       <mat-label>Acto Dispositivo {{nombreArchivo}}</mat-label>
       <input matInput style="display: none;" >
-      <input type="file" name="acto Dispositivo" [(ngModel)]="objeto.actoDispositivo" #actoDispositivo="ngModel">
+      <!--<input type="file" name="acto Dispositivo" [(ngModel)]="objeto.actoDispositivo" #actoDispositivo="ngModel">-->
+      <input type="file" name="acto Dispositivo" (change)="onFileSelected($event)" enctype=" multipart/form-data"> 
     </mat-form-field>
   </mat-card-content>
   <mat-card-actions>

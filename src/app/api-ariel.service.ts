@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { EmpleadoItem } from './paginas/empleado/empleado-datasource';
 import { environment } from 'src/environments/environment';
 import { AbonoItem} from './paginas/legitimo-abono/legitimo-abono.datasource';
+import { fromEventPattern } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -60,18 +61,18 @@ export class ApiArielService {
     {headers:{'authorization':localStorage.getItem('Token')||''},responseType: 'arraybuffer'} );
   }
   postAbono(objeto: AbonoItem){
-    return this.http.post(`${this.API_URL}/legitimoab`,{
-      organismo: objeto.organismo,
-      proveedor: objeto.proveedor,
-      descripcion: objeto.descripcion,
-      fechaInicio: objeto.fechaInicio,
-      fechaFin: objeto.fechaFin,
-      monto: objeto.monto,
-      justificacion: objeto.justificacion,
-      actoDispositivo: objeto.actoDispositivo,
-      idUsuario: objeto.idUsuario,
-      fecha: objeto.fecha
-    },
+    const formulario=new FormData();
+    formulario.append("proveedor",objeto.proveedor);
+    formulario.append("organismo",objeto.organismo.toString());
+    formulario.append("descripcion",objeto.descripcion);
+    formulario.append("fechaInicio",objeto.fechaInicio);
+    formulario.append("fechaFin",objeto.fechaFin);
+    formulario.append("monto",objeto.monto.toString());
+    formulario.append("justificacion",objeto.justificacion);
+    formulario.append("idUsuario",objeto.idUsuario.toString());
+    formulario.append("fecha",objeto.fecha);
+    formulario.append("actodispo",objeto.actoDispositivo);
+    return this.http.post(`${this.API_URL}/legitimoab`,formulario,
     {headers:{'authorization':localStorage.getItem('Token')||''}})
   }
 
