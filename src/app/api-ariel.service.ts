@@ -4,6 +4,7 @@ import { EmpleadoItem } from './paginas/empleado/empleado-datasource';
 import { environment } from 'src/environments/environment';
 import { AbonoItem} from './paginas/legitimo-abono/legitimo-abono.datasource';
 import { fromEventPattern } from 'rxjs';
+import {ProveedoresItem} from './paginas/proveedores/proveedores-datasource';
 
 @Injectable({
   providedIn: 'root'
@@ -97,4 +98,28 @@ export class ApiArielService {
     {headers:{'authorization':localStorage.getItem('Token')||''}});
   }
 
+  getProveedores(){
+
+    return this.http.get<ProveedoresItem[]>(`${this.API_URL}/proveedor`,
+    {headers:{'authorization':localStorage.getItem('Token')||''}});
+
+  }
+
+  postProveedores(objeto: ProveedoresItem){
+    return this.http.post(`${this.API_URL}/proveedor`,{
+      cuit: objeto.cuit,
+      razonSocial: objeto.razonSocial,
+      tPersona: objeto.tPersona,
+      mail: objeto.mail,
+      provincia: objeto.provincia,
+      localidad: objeto.localidad,
+      telefono: objeto.telefono
+    },
+    {headers:{'authorization':localStorage.getItem('Token')||''}})
+  }
+
+  deleteProveedores(objeto: ProveedoresItem){
+    return this.http.put(`${this.API_URL}/proveedor/borrado/${objeto.cuit}`,
+    {headers:{'authorization':localStorage.getItem('Token')||''}});
+  }
 }

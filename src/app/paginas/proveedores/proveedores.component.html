@@ -1,1 +1,124 @@
-<p>proveedores works!</p>
+<mat-card *ngIf="mostrarLista">
+  <mat-card-title>Proveedores
+
+  </mat-card-title>
+  <mat-card-actions>
+    <button mat-button (click)="nuevo()">NUEVO</button>
+  </mat-card-actions>
+  <mat-card-content>
+    <div class="mat-elevation-z8" >
+      <table mat-table class="full-width-table" matSort aria-label="Elements">
+
+        <!-- Id Column -->
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Id</th>
+          <td mat-cell *matCellDef="let row">{{row.id}}</td>
+        </ng-container>
+
+         <!-- cuit Column -->
+        <ng-container matColumnDef="cuit">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Cuit</th>
+          <td mat-cell *matCellDef="let row">{{row.cuit}}</td>
+        </ng-container>
+
+         <!-- razonSocial Column -->
+        <ng-container matColumnDef="razonSocial">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>razonSocial</th>
+          <td mat-cell *matCellDef="let row">{{row.razonSocial}}</td>
+        </ng-container>
+
+         <!-- tPersona Column -->
+         <ng-container matColumnDef="tPersona">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>tPersona</th>
+          <td mat-cell *matCellDef="let row">{{row.tPersona}}</td>
+        </ng-container>
+
+         <!-- mail Column -->
+          <ng-container matColumnDef="mail">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Mail</th>
+            <td mat-cell *matCellDef="let row">{{row.mail}}</td>
+          </ng-container>
+
+         <!-- provincia Column -->
+          <ng-container matColumnDef="provincia">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>provincia</th>
+            <td mat-cell *matCellDef="let row">{{row.provincia}}</td>
+          </ng-container>
+
+          <!-- localidad Column -->
+          <ng-container matColumnDef="localidad">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>localidad</th>
+            <td mat-cell *matCellDef="let row">{{row.localidad}}</td>
+          </ng-container>
+
+          <!-- telefono Column -->
+          <ng-container matColumnDef="telefono">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>telefono</th>
+            <td mat-cell *matCellDef="let row">{{row.telefono}}</td>
+          </ng-container>
+
+          <!-- Accion Column -->
+          <ng-container matColumnDef="accion">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
+            <td mat-cell *matCellDef="let row">
+              <button mat-mini-fab color="warn" aria-label="Example icon button with a menu icon" (click)="eliminar(row)">
+                <mat-icon>delete</mat-icon>
+              </button>
+              </td>
+          </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+
+      <mat-paginator #paginator
+          [length]="dataSource?.data?.length"
+          [pageIndex]="0"
+          [pageSize]="10"
+          [pageSizeOptions]="[5, 10, 20]"
+          aria-label="Select page">
+      </mat-paginator>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+<mat-card *ngIf="mostrarFormulario">
+  <mat-card-title *ngIf="!editando">Nuevo Proveedor</mat-card-title>
+    <mat-card-content class="formulario">
+
+    <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input matInput name="mail" [(ngModel)]="objeto.mail" #mail="ngModel">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>cuit</mat-label>
+      <input matInput name="cuit" [(ngModel)]="objeto.cuit" #cuit="ngModel">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>razonSocial</mat-label>
+      <input matInput name="razonSocial" [(ngModel)]="objeto.razonSocial" #razonSocial="ngModel">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>tPersona</mat-label>
+      <input matInput  name="tPersona" [(ngModel)]="objeto.tPersona" #tPersona="ngModel" placeholder="00-00000000-0">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>provincia</mat-label>
+      <input matInput  name="provincia" [(ngModel)]="objeto.provincia" #provincia="ngModel" placeholder="00-00000000-0">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>localidad</mat-label>
+      <input matInput name="localidad" [(ngModel)]="objeto.localidad" #localidad="ngModel">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>telefono</mat-label>
+      <input matInput name="telefono" [(ngModel)]="objeto.telefono" #telefono="ngModel">
+    </mat-form-field>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button (click)="aceptar()" *ngIf="!editando">INGRESAR</button>
+    <button mat-button (click)="cancelar()">CANCELAR</button>
+          </mat-card-actions>
+</mat-card>
+
+
