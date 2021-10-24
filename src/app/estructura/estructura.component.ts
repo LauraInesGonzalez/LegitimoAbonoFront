@@ -17,5 +17,17 @@ export class EstructuraComponent {
     );
 
   constructor(private breakpointObserver: BreakpointObserver) {}
-
+  chequeoPermisos(tipo:String):boolean{
+    let chequeo=[];
+    let permisos=JSON.parse(localStorage.getItem('Permisos') || '[]');
+    
+    for (let i=0;i<permisos.length;i++){
+        chequeo.push(permisos[i].id);
+    }
+    if (chequeo.includes (tipo)){
+      return true;
+    }else{
+      return false;
+    }
+  }
 }

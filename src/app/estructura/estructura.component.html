@@ -5,11 +5,11 @@
       [opened]="(isHandset$ | async) === false">
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item href="tablero">Tablero</a>
-      <mat-list-item disabled=true>ADMINISTRACION</mat-list-item >
-        <a mat-list-item href="usuarios">Usuarios</a>
-        <a mat-list-item href="empleado">Empleados</a>
-        <a mat-list-item href="organismo">Organismos</a>
+      <a mat-list-item href="tablero" *ngIf='chequeoPermisos("PERMIT_ADMINISTRATE")'>Tablero</a>
+      <mat-list-item disabled=true *ngIf='chequeoPermisos("PERMIT_ADMINISTRATE")'>ADMINISTRACION</mat-list-item >
+        <a mat-list-item href="usuarios" *ngIf='chequeoPermisos("PERMIT_ADMINISTRATE")'>Usuarios</a>
+        <a mat-list-item href="empleado" *ngIf='chequeoPermisos("PERMIT_ADMINISTRATE")'>Empleados</a>
+        <a mat-list-item href="organismo" *ngIf='chequeoPermisos("PERMIT_ADMINISTRATE")'>Organismos</a>
       <mat-list-item disabled=true>LEGITIMOS ABONOS</mat-list-item >
         <a mat-list-item href="legitimo">Carga</a>
         <!-- <a mat-list-item href="listados">Listados</a>
