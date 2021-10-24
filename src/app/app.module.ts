@@ -34,6 +34,7 @@ import { LoginComponent } from './paginas/login/login.component';
 import { LegitimoAbonoComponent } from './paginas/legitimo-abono/legitimo-abono.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { ProveedoresComponent } from './paginas/proveedores/proveedores.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     DireccionComponent,
     UsuarioComponent,
     LoginComponent,
-    LegitimoAbonoComponent
+    LegitimoAbonoComponent,
+    ProveedoresComponent
   ],
   imports: [
     BrowserModule,

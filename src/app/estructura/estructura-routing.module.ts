@@ -8,7 +8,7 @@ import { OrganismoComponent } from '../paginas/organismo/organismo.component';
 import { TableroComponent } from '../paginas/tablero/tablero.component';
 import { UsuarioComponent } from '../paginas/usuario/usuario.component';
 import { EstructuraComponent } from './estructura.component';
-
+import { ProveedoresComponent } from '../paginas/proveedores/proveedores.component';
 const routes: Routes = [
   {
     path: '',
@@ -35,7 +35,7 @@ const routes: Routes = [
         },
         canActivate: [AuthGuard],
       }
-      
+
     ]
   },
   {
@@ -69,7 +69,15 @@ const routes: Routes = [
           role:"PERMIT_ADMINISTRATE"
         },
         canActivate: [AuthGuard],
-      }      
+      },
+      {
+        path: 'proveedores',
+        component: ProveedoresComponent,
+        data:{
+          role:"PERMIT_ADMINISTRATE"
+        },
+        canActivate: [AuthGuard],
+      }
     ]
   }
 ]
