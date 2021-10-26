@@ -114,14 +114,11 @@ export class ProveedoresComponent implements AfterViewInit, OnInit {
         this.mostrarFormulario = false;
         this.cargarLista();
       },error=>{
-        this._snackBar.open(error['error']['error'],'Aceptar',{
+        this._snackBar.open(error['error']['Mensaje'],'Aceptar',{
           horizontalPosition: this.horizontalPosition,
           verticalPosition: this.verticalPosition,
         });
-        //console.log(error['error']);
-
     })
-
   }
 
     cancelar(){
