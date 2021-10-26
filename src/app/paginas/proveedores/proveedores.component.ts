@@ -28,7 +28,9 @@ export class ProveedoresComponent implements AfterViewInit, OnInit {
   horizontalPosition: MatSnackBarHorizontalPosition = 'end';
   verticalPosition: MatSnackBarVerticalPosition = 'top';
 
-  organismos: any[] = [];
+  provincias: any[] = [];
+  localidades:any[] =[];
+
   objeto: ProveedoresItem ={id: 0,
     cuit: '',
     razonSocial: '',
@@ -85,7 +87,7 @@ export class ProveedoresComponent implements AfterViewInit, OnInit {
 
     this.mostrarLista = false;
     this.mostrarFormulario = true;
-    /*this.cargarOrganismos();*/
+    this.cargarProvincias();
   }
 
   editar(o:ProveedoresItem){
@@ -128,11 +130,11 @@ export class ProveedoresComponent implements AfterViewInit, OnInit {
     this.cargarLista();
   }
 
-  /*cargarOrganismos(){
-    this.apiLaura.getOrganismos().subscribe(data=>{
-      this.organismos = data;
+  cargarProvincias(){
+    this.api.getProvincias().subscribe(data=>{
+      this.provincias = data;
     });
-  }*/
+  }
 
   eliminar(o: ProveedoresItem){
     console.log(this.objeto);
@@ -156,7 +158,10 @@ export class ProveedoresComponent implements AfterViewInit, OnInit {
         //console.log(error['error']);
 
     })
-
-
+  }
+  cambioProvincia(prov:String){
+    this.api.getLocalidades(prov).subscribe(data=>{
+      this.localidades = data;
+    });
   }
 }

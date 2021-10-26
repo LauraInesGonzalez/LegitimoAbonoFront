@@ -122,4 +122,12 @@ export class ApiArielService {
     return this.http.put(`${this.API_URL}/proveedor/borrado/${objeto.cuit}`,
     {headers:{'authorization':localStorage.getItem('Token')||''}});
   }
+  getProvincias(){
+    return this.http.get<any[]>(`${this.API_URL}/provincia`,
+    {headers:{'authorization':localStorage.getItem('Token')||''}});
+  }
+  getLocalidades(prov:String){
+    return this.http.get<any[]>(`${this.API_URL}/localidad/provincia/${prov}`,
+    {headers:{'authorization':localStorage.getItem('Token')||''}});
+  }
 }

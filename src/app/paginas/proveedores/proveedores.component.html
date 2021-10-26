@@ -104,11 +104,15 @@
     </mat-form-field>
     <mat-form-field appearance="fill">
       <mat-label>provincia</mat-label>
-      <input matInput  name="provincia" [(ngModel)]="objeto.provincia" #provincia="ngModel" placeholder="Ingresar codigo provincia">
+      <mat-select  name="provincia" [(ngModel)]="objeto.provincia" #provincia="ngModel" (selectionChange)="cambioProvincia($event.value)">
+        <mat-option *ngFor="let provincia of provincias" [value]="provincia.id">{{provincia.nombre}}</mat-option>
+      </mat-select>
     </mat-form-field>
-    <mat-form-field appearance="fill">
+    <mat-form-field appearance="fill" *ngIf="localidades.length > 1">
       <mat-label>localidad</mat-label>
-      <input matInput name="localidad" [(ngModel)]="objeto.localidad" #localidad="ngModel" placeholder="Ingresar codigo localidad">
+      <mat-select  name="localidad" [(ngModel)]="objeto.localidad" #localidad="ngModel">
+        <mat-option *ngFor="let localidad of localidades" [value]="localidad.id">{{localidad.nombre}}</mat-option>
+      </mat-select>
     </mat-form-field>
     <mat-form-field appearance="fill">
       <mat-label>telefono</mat-label>
