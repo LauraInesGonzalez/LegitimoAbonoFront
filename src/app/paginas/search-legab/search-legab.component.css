@@ -1,0 +1,10 @@
+.full-width-table {
+    width: 100%;
+  }
+  
+  .formulario {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  

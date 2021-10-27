@@ -7,7 +7,6 @@ import { Observable, of as observableOf, merge } from 'rxjs';
 
 // TODO: Replace this with your own data model type
 export interface AbonoItem {
-  id:number;
   organismo: number;
   proveedor: string;
   descripcion: string;
@@ -19,7 +18,10 @@ export interface AbonoItem {
   idUsuario: number;
   fecha: string;
 }
-
+export interface OrgItem{
+  id:number;
+  denominacion:String;
+}
 
 /**
  * Data source for the Empleado view. This class should
@@ -87,7 +89,6 @@ export class AbonoDataSource extends DataSource<AbonoItem> {
         case 'Organismo': return compare(a.organismo, b.organismo, isAsc);
         case 'Proveedor': return compare(a.proveedor, b.proveedor, isAsc);
         case 'Usuario': return compare(+a.idUsuario, +b.idUsuario, isAsc);
-        case 'id': return compare(+a.id, +b.id, isAsc);
         default: return 0;
       }
     });

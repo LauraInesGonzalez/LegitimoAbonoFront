@@ -35,6 +35,7 @@ import { LegitimoAbonoComponent } from './paginas/legitimo-abono/legitimo-abono.
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { ProveedoresComponent } from './paginas/proveedores/proveedores.component';
+import { SearchLegabComponent } from './paginas/search-legab/search-legab.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { ProveedoresComponent } from './paginas/proveedores/proveedores.componen
     UsuarioComponent,
     LoginComponent,
     LegitimoAbonoComponent,
-    ProveedoresComponent
+    ProveedoresComponent,
+    SearchLegabComponent
   ],
   imports: [
     BrowserModule,

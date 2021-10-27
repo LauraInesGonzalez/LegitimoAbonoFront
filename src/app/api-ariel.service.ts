@@ -50,7 +50,12 @@ export class ApiArielService {
     return this.http.delete(`${this.API_URL}/empleado/${objeto.id}`,
     {headers:{'authorization':localStorage.getItem('Token')||''}});
   }
+  getAbonoorg(org:Number){
 
+    return this.http.get<AbonoItem[]>(`${this.API_URL}/legitimoab/organismo/${org}`,
+    {headers:{'authorization':localStorage.getItem('Token')||''}});
+
+  }
   getAbono(){
 
     return this.http.get<AbonoItem[]>(`${this.API_URL}/legitimoab`,
@@ -94,7 +99,7 @@ export class ApiArielService {
   }
 
   deleteAbono(objeto: AbonoItem){
-    return this.http.delete(`${this.API_URL}/legitimoab/${objeto.organismo}`,
+    return this.http.put(`${this.API_URL}/legitimoab/borrado/${objeto.id}`,null,
     {headers:{'authorization':localStorage.getItem('Token')||''}});
   }
 

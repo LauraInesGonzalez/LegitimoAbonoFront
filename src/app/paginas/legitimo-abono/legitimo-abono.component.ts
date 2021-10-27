@@ -31,6 +31,7 @@ export class LegitimoAbonoComponent implements AfterViewInit, OnInit {
 
   organismos: any[] = [];
   objeto: AbonoItem ={
+    id:0,
     organismo: 0,
     proveedor: '',
     descripcion: '',
@@ -44,7 +45,7 @@ export class LegitimoAbonoComponent implements AfterViewInit, OnInit {
   }
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['Organismo', 'Proveedor', 'FechaInicio', 'FechaFinalizacion', 'Monto', 'Justificacion', 'ActoDispositivo', 'Usuario', 'Fecha' ];
+  displayedColumns = ['id','Organismo', 'Proveedor', 'FechaInicio', 'FechaFinalizacion', 'Monto', 'Justificacion', 'ActoDispositivo', 'Usuario', 'Fecha', 'accion' ];
 
   constructor(
     private api: ApiArielService,
@@ -90,7 +91,9 @@ export class LegitimoAbonoComponent implements AfterViewInit, OnInit {
   nuevo(){
 
     this.editando = false;
-    this.objeto= { organismo: 0,
+    this.objeto= { 
+      id:0,
+      organismo: 0,
       proveedor: '',
       descripcion: '',
       fechaInicio: '',

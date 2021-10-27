@@ -9,6 +9,7 @@ import { TableroComponent } from '../paginas/tablero/tablero.component';
 import { UsuarioComponent } from '../paginas/usuario/usuario.component';
 import { EstructuraComponent } from './estructura.component';
 import { ProveedoresComponent } from '../paginas/proveedores/proveedores.component';
+import { SearchLegabComponent } from '../paginas/search-legab/search-legab.component';
 const routes: Routes = [
   {
     path: '',
@@ -30,6 +31,14 @@ const routes: Routes = [
       {
         path: 'organismo',
         component: OrganismoComponent,
+        data:{
+          role:"PERMIT_LOGIN"
+        },
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'blegitimo',
+        component: SearchLegabComponent,
         data:{
           role:"PERMIT_LOGIN"
         },
