@@ -56,6 +56,12 @@ export class ApiArielService {
     {headers:{'authorization':localStorage.getItem('Token')||''}});
 
   }
+  getAbonoprov(prov:Number){
+
+    return this.http.get<AbonoItem[]>(`${this.API_URL}/legitimoab/proveedor/${prov}`,
+    {headers:{'authorization':localStorage.getItem('Token')||''}});
+
+  }
   getAbono(){
 
     return this.http.get<AbonoItem[]>(`${this.API_URL}/legitimoab`,

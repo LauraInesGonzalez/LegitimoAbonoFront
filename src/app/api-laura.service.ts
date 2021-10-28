@@ -17,8 +17,11 @@ export class ApiLauraService {
     return this.http.get<any>(`${this.API_URL}/organismo`,
         {headers:{'authorization':localStorage.getItem('Token')||''}}
     );
-    
-   
+  }
+  getProveedores(){
+    return this.http.get<any>(`${this.API_URL}/proveedor`,
+        {headers:{'authorization':localStorage.getItem('Token')||''}}
+    );
   }
 
   getUsuarios(){

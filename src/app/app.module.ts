@@ -36,6 +36,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { ProveedoresComponent } from './paginas/proveedores/proveedores.component';
 import { SearchLegabComponent } from './paginas/search-legab/search-legab.component';
+import { SearchLabProvComponent } from './paginas/search-lab-prov/search-lab-prov.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { SearchLegabComponent } from './paginas/search-legab/search-legab.compon
     LoginComponent,
     LegitimoAbonoComponent,
     ProveedoresComponent,
-    SearchLegabComponent
+    SearchLegabComponent,
+    SearchLabProvComponent
   ],
   imports: [
     BrowserModule,

@@ -5,7 +5,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
 import { ApiArielService } from 'src/app/api-ariel.service';
 import { ApiLauraService } from 'src/app/api-laura.service';
-import { AbonoDataSource, AbonoItem, OrgItem } from './search-legab.datasource';
+import { AbonoDataSource, AbonoItem, ProvItem} from './search-lab-prov.datasource';
 import {
   MatSnackBar,
   MatSnackBarHorizontalPosition,
@@ -13,11 +13,11 @@ import {
 } from '@angular/material/snack-bar';
 
 @Component({
-  selector: 'app-search-legab',
-  templateUrl: './search-legab.component.html',
-  styleUrls: ['./search-legab.component.css']
+  selector: 'app-search-lab-prov',
+  templateUrl: './search-lab-prov.component.html',
+  styleUrls: ['./search-lab-prov.component.css']
 })
-export class SearchLegabComponent implements AfterViewInit, OnInit {
+export class SearchLabProvComponent implements AfterViewInit, OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatTable) table!: MatTable<AbonoItem>;
@@ -29,10 +29,17 @@ export class SearchLegabComponent implements AfterViewInit, OnInit {
   verticalPosition: MatSnackBarVerticalPosition = 'top';
   nombreArchivo: string = '';
 
-  organismos: any[] = [];
-  objectorg: OrgItem={
+  proveedores: any[] = [];
+  objectprov: ProvItem={
     id:0,
-    denominacion:""
+    cuit:"",
+    razonSocial:"",
+    tPersona:"",
+    mail:"",
+    provincia:"",
+    localidad:"",
+    telefono:"",
+    eliminado:0
   }
   objeto: AbonoItem ={
     organismo: 0,
@@ -58,11 +65,11 @@ export class SearchLegabComponent implements AfterViewInit, OnInit {
     this.dataSource = new AbonoDataSource();
   }
   ngOnInit(): void {
-    this.cargarOrganismos();
+    this.cargarProveedores();
   }
-  cargarOrganismos(){
-    this.apiLaura.getOrganismos().subscribe(data=>{
-      this.organismos = data;
+  cargarProveedores(){
+    this.apiLaura.getProveedores().subscribe(data=>{
+      this.proveedores = data;
     });
   }
   onFileSelected(event:any) {
@@ -72,11 +79,11 @@ export class SearchLegabComponent implements AfterViewInit, OnInit {
     }
   }
 
-  cargarLista(organismo:number){
-    this.api.getAbonoorg(organismo).subscribe(data=>{
-      console.log(data)
-      this.dataSource.data = data;
-      this.table.dataSource = this.dataSource.connect();
+  cargarLista(proveedor:number){
+    this.api.getAbonoprov(proveedor).subscribe(data=>{
+      console.log("data"+data);
+        this.dataSource.data = data;
+        this.table.dataSource = this.dataSource.connect();  
       },error=>{
         this.dataSource.data=[];
         this.table.dataSource = this.dataSource.connect();
@@ -96,4 +103,5 @@ export class SearchLegabComponent implements AfterViewInit, OnInit {
   }
 
 }
+
 

@@ -10,6 +10,7 @@ import { UsuarioComponent } from '../paginas/usuario/usuario.component';
 import { EstructuraComponent } from './estructura.component';
 import { ProveedoresComponent } from '../paginas/proveedores/proveedores.component';
 import { SearchLegabComponent } from '../paginas/search-legab/search-legab.component';
+import { SearchLabProvComponent } from '../paginas/search-lab-prov/search-lab-prov.component';
 const routes: Routes = [
   {
     path: '',
@@ -39,6 +40,14 @@ const routes: Routes = [
       {
         path: 'blegitimo',
         component: SearchLegabComponent,
+        data:{
+          role:"PERMIT_LOGIN"
+        },
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'blegitimop',
+        component: SearchLabProvComponent,
         data:{
           role:"PERMIT_LOGIN"
         },
