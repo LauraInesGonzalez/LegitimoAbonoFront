@@ -103,6 +103,9 @@ export class EmpleadoDataSource extends DataSource<EmpleadoItem> {
     return data.sort((a, b) => {
       const isAsc = this.sort?.direction === 'asc';
       switch (this.sort?.active) {
+        case 'organismo': return compare(a.idOrganismo, b.idOrganismo, isAsc);
+        case 'cuil': return compare(a.cuil, b.cuil, isAsc);
+        case 'cargo': return compare(a.cargo, b.cargo, isAsc);
         case 'apellido': return compare(a.apellido, b.apellido, isAsc);
         case 'nombre': return compare(a.nombre, b.nombre, isAsc);
         case 'id': return compare(+a.id, +b.id, isAsc);
