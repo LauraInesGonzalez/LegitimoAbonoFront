@@ -103,9 +103,7 @@ import {
     }
   
     aceptar(){
-      console.log(this.objeto);
-  
-      this.apiLaura.postUsuario(this.objeto).subscribe(
+        this.apiLaura.postUsuario(this.objeto).subscribe(
         data=>{
           this._snackBar.open('Exito: Los datos se guardaron correctamente','',{
             horizontalPosition: this.horizontalPosition,
@@ -127,8 +125,6 @@ import {
     }
   
     modificar(){
-      console.log(this.objeto);
-  
       this.apiLaura.putUsuario(this.objeto).subscribe(
         data=>{
           console.log(data);
@@ -155,7 +151,6 @@ import {
   
       this.apiLaura.deleteUsuario(o).subscribe(
         data=>{
-          console.log(data);
           this._snackBar.open('Exito: Los datos se eliminaron correctamente','',{
             horizontalPosition: this.horizontalPosition,
             verticalPosition: this.verticalPosition,

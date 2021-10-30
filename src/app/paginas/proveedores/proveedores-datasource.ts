@@ -81,6 +81,11 @@ export class ProveedoresDataSource extends DataSource<ProveedoresItem> {
       const isAsc = this.sort?.direction === 'asc';
       switch (this.sort?.active) {
         case 'cuit': return compare(a.cuit, b.cuit, isAsc);
+        case 'telefono': return compare(a.telefono, b.telefono, isAsc);
+        case 'localidad': return compare(a.localidad, b.localidad, isAsc);
+        case 'provincia': return compare(a.provincia, b.provincia, isAsc);
+        case 'mail': return compare(a.mail, b.mail, isAsc);
+        case 'tPersona': return compare(a.tPersona, b.tPersona, isAsc);
         case 'razonSocial': return compare(a.razonSocial, b.razonSocial, isAsc);
         case 'id': return compare(+a.id, +b.id, isAsc);
         default: return 0;

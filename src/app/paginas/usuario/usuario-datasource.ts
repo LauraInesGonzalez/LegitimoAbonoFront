@@ -80,6 +80,9 @@ export class UsuarioDataSource extends DataSource<UsuarioItem> {
       const isAsc = this.sort?.direction === 'asc';
       switch (this.sort?.active) {
         case 'apellido': return compare(a.apellido, b.apellido, isAsc);
+        case 'mail': return compare(a.mail, b.mail, isAsc);
+        case 'rol': return compare(a.idRol, b.idRol, isAsc);
+        case 'usuario': return compare(a.usuario, b.usuario, isAsc);
         case 'nombre': return compare(a.nombre, b.nombre, isAsc);
         case 'id': return compare(+a.id, +b.id, isAsc);
         default: return 0;

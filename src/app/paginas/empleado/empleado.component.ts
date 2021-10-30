@@ -39,7 +39,7 @@ export class EmpleadoComponent implements AfterViewInit, OnInit {
     eliminado: null}
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['id', 'nombre', 'apellido', 'cuil', 'organismo', 'cargo', 'accion'];
+  displayedColumns = ['id', 'nombre', 'apellido', 'cuil', 'mail', 'organismo','cargo', 'accion'];
 
   constructor(
     private api: ApiArielService,
