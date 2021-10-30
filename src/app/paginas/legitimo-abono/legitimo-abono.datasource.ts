@@ -87,6 +87,11 @@ export class AbonoDataSource extends DataSource<AbonoItem> {
         case 'Organismo': return compare(a.organismo, b.organismo, isAsc);
         case 'Proveedor': return compare(a.proveedor, b.proveedor, isAsc);
         case 'Usuario': return compare(+a.idUsuario, +b.idUsuario, isAsc);
+        case 'FechaInicio': return compare(a.fechaInicio, b.fechaInicio, isAsc);
+        case 'FechaFinalizacion': return compare(a.fechaFin, b.fechaFin, isAsc);
+        case 'Monto': return compare(a.monto, b.monto, isAsc);
+        case 'Justificacion': return compare(a.justificacion, b.justificacion, isAsc);
+        case 'Fecha': return compare(a.fecha, b.fecha, isAsc);
         case 'id': return compare(+a.id, +b.id, isAsc);
         default: return 0;
       }
