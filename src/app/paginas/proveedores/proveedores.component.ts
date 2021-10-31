@@ -84,7 +84,8 @@ export class ProveedoresComponent implements AfterViewInit, OnInit {
     localidad: '',
     telefono: 0,
     eliminado: null}
-
+    this.provincias=[];
+    this.localidades=[];
     this.mostrarLista = false;
     this.mostrarFormulario = true;
     this.cargarProvincias();

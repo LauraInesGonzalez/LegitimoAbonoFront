@@ -70,7 +70,6 @@ export class EmpleadoComponent implements AfterViewInit, OnInit {
   }
 
   nuevo(){
-
     this.editando = false;
     this.objeto= {id: 0,
       cuil: '',
@@ -89,16 +88,12 @@ export class EmpleadoComponent implements AfterViewInit, OnInit {
   editar(o:EmpleadoItem){
     this.editando = true;
     this.objeto = o;
-    //console.log(o);
-
     this.mostrarLista = false;
     this.mostrarFormulario = true;
     this.cargarOrganismos();
   }
 
   aceptar(){
-    console.log(this.objeto);
-
     this.api.postEmpleado(this.objeto).subscribe(
       data=>{
         this._snackBar.open('Exito: Los datos se guardaron correctamente','',{
@@ -114,15 +109,11 @@ export class EmpleadoComponent implements AfterViewInit, OnInit {
           horizontalPosition: this.horizontalPosition,
           verticalPosition: this.verticalPosition,
         });
-        //console.log(error['error']);
-
     })
     
   }
 
   modificar(){
-    console.log(this.objeto);
-
     this.api.putEmpleado(this.objeto).subscribe(
       data=>{
         console.log(data);
