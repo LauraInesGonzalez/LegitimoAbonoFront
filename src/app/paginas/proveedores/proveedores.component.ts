@@ -42,7 +42,7 @@ export class ProveedoresComponent implements AfterViewInit, OnInit {
     eliminado: null}
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['id', 'cuit', 'razonSocial', 'tPersona', 'mail', 'provincia', 'localidad', 'telefono'];
+  displayedColumns = ['id', 'cuit', 'razonSocial', 'tPersona', 'mail', 'provincia', 'localidad', 'telefono', 'accion'];
 
   constructor(
     private api: ApiArielService,
@@ -102,8 +102,6 @@ export class ProveedoresComponent implements AfterViewInit, OnInit {
   }
 
   aceptar(){
-    console.log(this.objeto);
-
     this.api.postProveedores(this.objeto).subscribe(
       data=>{
         this._snackBar.open('Exito: Los datos se guardaron correctamente','',{
@@ -139,7 +137,6 @@ export class ProveedoresComponent implements AfterViewInit, OnInit {
 
     this.api.deleteProveedores(o).subscribe(
       data=>{
-        console.log(data);
         this._snackBar.open('Exito: Los datos se guardaron correctamente','',{
           horizontalPosition: this.horizontalPosition,
           verticalPosition: this.verticalPosition,

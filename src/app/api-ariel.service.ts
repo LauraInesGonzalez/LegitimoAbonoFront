@@ -130,7 +130,7 @@ export class ApiArielService {
   }
 
   deleteProveedores(objeto: ProveedoresItem){
-    return this.http.put(`${this.API_URL}/proveedor/borrado/${objeto.cuit}`,
+    return this.http.put(`${this.API_URL}/proveedor/borrado/${objeto.cuit}`,null,
     {headers:{'authorization':localStorage.getItem('Token')||''}});
   }
   getProvincias(){
