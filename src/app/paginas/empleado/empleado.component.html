@@ -83,37 +83,49 @@
   <mat-card-title *ngIf="!editando">Nuevo Empleado</mat-card-title>
   <mat-card-title *ngIf="editando">Modificar Empleado</mat-card-title>
   <mat-card-content class="formulario">
-    <mat-form-field appearance="fill">
-      <mat-label>Email</mat-label>
-      <input matInput name="mail" [(ngModel)]="objeto.mail" #mail="ngModel">
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-      <mat-label>Nombre</mat-label>
-      <input matInput name="nombre" [(ngModel)]="objeto.nombre" #nombre="ngModel">
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-      <mat-label>Apellido</mat-label>
-      <input matInput name="apellido" [(ngModel)]="objeto.apellido" #apellido="ngModel">
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-      <mat-label>Cuil</mat-label>
-      <input matInput  name="cuil" [(ngModel)]="objeto.cuil" #cuil="ngModel" placeholder="00-00000000-0">
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-      <mat-label>Organismo</mat-label>
-      <mat-select  name="idOrganismo" [(ngModel)]="objeto.idOrganismo" #idOrganismo="ngModel">
-        <mat-option *ngFor="let organismo of organismos" [value]="organismo.id">{{organismo.denominacion}}</mat-option>
-      </mat-select>
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-      <mat-label>Cargo</mat-label>
-      <input matInput name="cargo" [(ngModel)]="objeto.cargo" #cargo="ngModel">
-    </mat-form-field>
+    <mat-grid-list cols="2" rowHeight="300px" class="grid-layout-custom"> 
+      <mat-grid-tile> 
+        <div class="formulario">
+          <mat-form-field appearance="legacy" class="fields-form">
+            <mat-label>Nombre</mat-label>
+            <input matInput name="nombre" [(ngModel)]="objeto.nombre" #nombre="ngModel" class="fields-form">
+          </mat-form-field>
+          <mat-form-field appearance="legacy" class="fields-form">
+            <mat-label>Apellido</mat-label>
+            <input matInput name="apellido" [(ngModel)]="objeto.apellido" #apellido="ngModel" class="fields-form">
+          </mat-form-field>
+          <mat-form-field appearance="legacy" class="fields-form-min">
+            <mat-label>Cuil</mat-label>
+            <input matInput  name="cuil" [(ngModel)]="objeto.cuil" #cuil="ngModel" placeholder="00-00000000-0" class="fields-form-min">
+          </mat-form-field>
+          <mat-form-field appearance="legacy" class="fields-form">
+            <mat-label>Email</mat-label>
+            <input matInput name="mail" [(ngModel)]="objeto.mail" #mail="ngModel" class="fields-form">
+          </mat-form-field>
+        </div> 
+      </mat-grid-tile>
+      <mat-grid-tile> 
+        <div class="formulario">
+          <mat-form-field appearance="legacy" class="fields-form-min">
+            <mat-label>Organismo</mat-label>
+            <mat-select  name="idOrganismo" [(ngModel)]="objeto.idOrganismo" #idOrganismo="ngModel">
+              <mat-option *ngFor="let organismo of organismos" [value]="organismo.id">{{organismo.denominacion}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field appearance="legacy" class="fields-form">
+            <mat-label>Cargo</mat-label>
+            <input matInput name="cargo" [(ngModel)]="objeto.cargo" #cargo="ngModel" class="fields-form">
+          </mat-form-field>
+        </div> 
+      </mat-grid-tile>
+    </mat-grid-list> 
   </mat-card-content>
-  <mat-card-actions>
-    <button mat-button (click)="modificar()" *ngIf="editando">INGRESAR</button>
-    <button mat-button (click)="aceptar()" *ngIf="!editando">INGRESAR</button>
-    <button mat-button (click)="cancelar()">CANCELAR</button>
-          </mat-card-actions>
+  <div class="centrado-botones">
+    <mat-card-actions>
+      <button mat-button (click)="modificar()" *ngIf="editando" class="exitoso">INGRESAR</button>
+      <button mat-button (click)="aceptar()" *ngIf="!editando" class="exitoso">INGRESAR</button>
+      <button mat-button (click)="cancelar()" class="cancelar">CANCELAR</button>
+    </mat-card-actions>
+  </div>
 </mat-card>
 
