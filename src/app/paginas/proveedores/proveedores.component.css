@@ -1,9 +1,45 @@
 .full-width-table {
   width: 100%;
 }
-
 .formulario {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  width:100%;
+  height: 80%;
+  padding:5%;
 }
+.grid-layout-custom{
+  width: 80%;
+  height: 100%;
+}
+.fields-form{
+  width:80%;
+}
+.fields-form-min{
+  width:50%
+}
+.card-form{
+  width:100%;
+}
+.sector-justificacion{
+  height:60px;
+  overflow: visible;
+  resize: none;
+}
+.exitoso {
+  background-color: green;
+  color: #fff;
+}
+.cancelar {
+  background-color: red;
+  color: #fff;
+}
+.centrado-botones{
+  width:80%;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
