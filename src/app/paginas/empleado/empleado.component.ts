@@ -16,7 +16,7 @@ import {
   templateUrl: './empleado.component.html',
   styleUrls: ['./empleado.component.css']
 })
-export class EmpleadoComponent implements AfterViewInit, OnInit {
+export class EmpleadoComponent implements  OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatTable) table!: MatTable<EmpleadoItem>;
@@ -57,17 +57,15 @@ export class EmpleadoComponent implements AfterViewInit, OnInit {
 
   cargarLista(){
     this.api.getEmpleados().subscribe(data=>{
+      this.dataSource.sort = this.sort;
+      this.dataSource.paginator = this.paginator;
+      this.table.dataSource = this.dataSource;
       this.dataSource.data = data;
       this.table.dataSource = this.dataSource.connect();
       },error=>{});
   }
 
-  ngAfterViewInit(): void {
-    this.dataSource.sort = this.sort;
-    this.dataSource.paginator = this.paginator;
-    this.table.dataSource = this.dataSource;
 
-  }
 
   nuevo(){
     this.editando = false;

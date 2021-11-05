@@ -60,15 +60,16 @@ import {
 
     cargarLista(){
       this.apiLaura.getUsuarios().subscribe(data=>{
+        this.dataSource.sort = this.sort;
+        this.dataSource.paginator = this.paginator;
+        this.table.dataSource = this.dataSource;
         this.dataSource.data = data;
         this.table.dataSource = this.dataSource.connect();
         },error=>{});
     }
   
     ngAfterViewInit(): void {
-      this.dataSource.sort = this.sort;
-      this.dataSource.paginator = this.paginator;
-      this.table.dataSource = this.dataSource;
+
   
     }
   

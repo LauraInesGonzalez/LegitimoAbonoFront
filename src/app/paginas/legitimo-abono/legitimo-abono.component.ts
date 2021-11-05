@@ -16,7 +16,7 @@ import {
   templateUrl: './legitimo-abono.component.html',
   styleUrls: ['./legitimo-abono.component.css']
 })
-export class LegitimoAbonoComponent implements AfterViewInit, OnInit {
+export class LegitimoAbonoComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatTable) table!: MatTable<AbonoItem>;
@@ -70,6 +70,9 @@ export class LegitimoAbonoComponent implements AfterViewInit, OnInit {
 
   cargarLista(){
     this.api.getAbono().subscribe(data=>{
+      this.dataSource.sort = this.sort;
+      this.dataSource.paginator = this.paginator;
+      this.table.dataSource = this.dataSource;
       this.dataSource.data = data;
       this.table.dataSource = this.dataSource.connect();
       },error=>{});
@@ -80,12 +83,6 @@ export class LegitimoAbonoComponent implements AfterViewInit, OnInit {
       let url = window.URL.createObjectURL(thefile);
       window.open(url);
     });
-  }
-  ngAfterViewInit(): void {
-    this.dataSource.sort = this.sort;
-    this.dataSource.paginator = this.paginator;
-    this.table.dataSource = this.dataSource;
-
   }
 
   nuevo(){

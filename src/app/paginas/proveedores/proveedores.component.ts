@@ -16,7 +16,7 @@ import {
   templateUrl: './proveedores.component.html',
   styleUrls: ['./proveedores.component.css']
 })
-export class ProveedoresComponent implements AfterViewInit, OnInit {
+export class ProveedoresComponent implements  OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatTable) table!: MatTable<ProveedoresItem>;
@@ -60,16 +60,12 @@ export class ProveedoresComponent implements AfterViewInit, OnInit {
 
   cargarLista(){
     this.api.getProveedores().subscribe(data=>{
+      this.dataSource.sort = this.sort;
+      this.dataSource.paginator = this.paginator;
+      this.table.dataSource = this.dataSource;
       this.dataSource.data = data;
       this.table.dataSource = this.dataSource.connect();
       },error=>{});
-  }
-
-  ngAfterViewInit(): void {
-    this.dataSource.sort = this.sort;
-    this.dataSource.paginator = this.paginator;
-    this.table.dataSource = this.dataSource;
-
   }
 
   nuevo(){
