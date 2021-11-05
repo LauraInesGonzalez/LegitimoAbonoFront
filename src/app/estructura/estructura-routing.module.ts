@@ -11,6 +11,7 @@ import { EstructuraComponent } from './estructura.component';
 import { ProveedoresComponent } from '../paginas/proveedores/proveedores.component';
 import { SearchLegabComponent } from '../paginas/search-legab/search-legab.component';
 import { SearchLabProvComponent } from '../paginas/search-lab-prov/search-lab-prov.component';
+import { LegitimoAbIdComponent } from '../paginas/legitimo-ab-id/legitimo-ab-id.component';
 const routes: Routes = [
   {
     path: '',
@@ -48,6 +49,14 @@ const routes: Routes = [
       {
         path: 'blegitimop',
         component: SearchLabProvComponent,
+        data:{
+          role:"PERMIT_LOGIN"
+        },
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'blegitimoid',
+        component: LegitimoAbIdComponent,
         data:{
           role:"PERMIT_LOGIN"
         },

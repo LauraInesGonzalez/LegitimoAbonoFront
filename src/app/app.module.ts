@@ -37,6 +37,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { ProveedoresComponent } from './paginas/proveedores/proveedores.component';
 import { SearchLegabComponent } from './paginas/search-legab/search-legab.component';
 import { SearchLabProvComponent } from './paginas/search-lab-prov/search-lab-prov.component';
+import { LegitimoAbIdComponent } from './paginas/legitimo-ab-id/legitimo-ab-id.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { SearchLabProvComponent } from './paginas/search-lab-prov/search-lab-pro
     LegitimoAbonoComponent,
     ProveedoresComponent,
     SearchLegabComponent,
-    SearchLabProvComponent
+    SearchLabProvComponent,
+    LegitimoAbIdComponent
   ],
   imports: [
     BrowserModule,
