@@ -16,7 +16,7 @@ import {
   templateUrl: './usuario.component.html',
   styleUrls: ['./usuario.component.css']
 })
-  export class UsuarioComponent implements AfterViewInit, OnInit {
+  export class UsuarioComponent implements  OnInit {
     @ViewChild(MatPaginator) paginator!: MatPaginator;
     @ViewChild(MatSort) sort!: MatSort;
     @ViewChild(MatTable) table!: MatTable<UsuarioItem>;
@@ -66,11 +66,6 @@ import {
         this.dataSource.data = data;
         this.table.dataSource = this.dataSource.connect();
         },error=>{});
-    }
-  
-    ngAfterViewInit(): void {
-
-  
     }
   
     nuevo(){
