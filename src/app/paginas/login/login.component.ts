@@ -13,6 +13,7 @@ export class LoginComponent implements OnInit {
   public loginInvalid = false;
   private formSubmitAttempt = false;
   private returnUrl: string;
+  mensaje:String="";
 
   constructor(
     private fb: FormBuilder,
@@ -60,6 +61,7 @@ export class LoginComponent implements OnInit {
           },
           error=>{
             this.loginInvalid = true;
+            this.mensaje=error.error.error;
             console.log(error);
           }
         );

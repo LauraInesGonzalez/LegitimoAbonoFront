@@ -3,7 +3,7 @@
       <form [formGroup]="form" (ngSubmit)="onSubmit()">
         <h2>Ingreso</h2>
         <mat-error *ngIf="loginInvalid">
-          El Usuario y la Contraseña no fueron reconicidos
+          {{this.mensaje}}
         </mat-error>
         <mat-form-field class="full-width-input">
           <input matInput placeholder="Usuario" formControlName="username" required>
