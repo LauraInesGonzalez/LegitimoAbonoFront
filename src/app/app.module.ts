@@ -38,6 +38,7 @@ import { ProveedoresComponent } from './paginas/proveedores/proveedores.componen
 import { SearchLegabComponent } from './paginas/search-legab/search-legab.component';
 import { SearchLabProvComponent } from './paginas/search-lab-prov/search-lab-prov.component';
 import { LegitimoAbIdComponent } from './paginas/legitimo-ab-id/legitimo-ab-id.component';
+import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -81,7 +82,8 @@ import { LegitimoAbIdComponent } from './paginas/legitimo-ab-id/legitimo-ab-id.c
     FormsModule,
     MatSnackBarModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    ChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

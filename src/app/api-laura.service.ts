@@ -55,4 +55,32 @@ export class ApiLauraService {
     return this.http.delete(`${this.API_URL}/userinterno/${objeto.usuario}`,
     {headers:{'authorization':localStorage.getItem('Token')||''}});
   }
+
+  getDashUsuarios(){
+    return this.http.get<any>(`${this.API_URL}/dashboard/usuarioscount`,
+      {headers:{'authorization':localStorage.getItem('Token')||''}});
+  }
+
+  getDashProveedores(){
+    return this.http.get<any>(`${this.API_URL}/dashboard/proveedorescount`,
+      {headers:{'authorization':localStorage.getItem('Token')||''}});
+  }
+
+  getDashAbonoUsuario(){
+    return this.http.get<any>(`${this.API_URL}/dashboard/legabusuarios`,
+      {headers:{'authorization':localStorage.getItem('Token')||''}});
+
+  }
+
+  getDashProveedoresProvincia(){
+    return this.http.get<any>(`${this.API_URL}/dashboard/proveedorescountprov`,
+      {headers:{'authorization':localStorage.getItem('Token')||''}});
+
+  }
+
+  getDashAbonosOrganismos(){
+    return this.http.get<any>(`${this.API_URL}/dashboard/countlaorg`,
+      {headers:{'authorization':localStorage.getItem('Token')||''}});
+
+  }
 }

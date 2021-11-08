@@ -101,8 +101,12 @@
               <input matInput name="razonSocial" [(ngModel)]="objeto.razonSocial" #razonSocial="ngModel">
             </mat-form-field>
             <mat-form-field appearance="legacy" class="fields-form">
-              <mat-label>tPersona</mat-label>
-              <input matInput  name="tPersona" [(ngModel)]="objeto.tPersona" #tPersona="ngModel" placeholder="Ingresar tipo">
+              <mat-label>Tipo de Persona</mat-label>
+              <mat-select  name="tPersona" [(ngModel)]="objeto.tPersona" #tPersona="ngModel" >
+                <mat-option value="FISICA">FISICA</mat-option>
+                <mat-option value="JURIDICA">JURUDICA</mat-option>
+              </mat-select>
+
             </mat-form-field>
           </div> 
         </mat-grid-tile>
